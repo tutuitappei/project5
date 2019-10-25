@@ -49,10 +49,18 @@ void KeyState::RefKeyData(void)
 
 void KeyState::SetKeyConfig(void)
 {
-	if (_buf[KEY_INPUT_F1] && !modoKeyOld)
+	//if (_buf[KEY_INPUT_F1] && !modoKeyOld)
+	//{
+	//	TRACE("RefKeyData\n")
+	//	func = &KeyState::RefKeyData;
+	//}
+	//for (int i = 0; i < 256; i++)
+	//{
+	//	 = _buf[i];
+	//}
+	if (INPUT_ID() == INPUT_ID::MAX)
 	{
 		TRACE("RefKeyData\n")
 		func = &KeyState::RefKeyData;
 	}
-
 }
