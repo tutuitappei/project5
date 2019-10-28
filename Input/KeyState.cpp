@@ -42,6 +42,7 @@ void KeyState::RefKeyData(void)
 	}
 	if (_buf[KEY_INPUT_F1] && !modoKeyOld)
 	{
+		_confID = INPUT_ID::LEFT;
 		TRACE("SetKeyConfig\n")
 		func = &KeyState::SetKeyConfig;
 	}
@@ -49,16 +50,37 @@ void KeyState::RefKeyData(void)
 
 void KeyState::SetKeyConfig(void)
 {
-	//if (_buf[KEY_INPUT_F1] && !modoKeyOld)
-	//{
-	//	TRACE("RefKeyData\n")
-	//	func = &KeyState::RefKeyData;
-	//}
-	//for (int i = 0; i < 256; i++)
-	//{
-	//	 = _buf[i];
-	//}
-	if (INPUT_ID() == INPUT_ID::MAX)
+	if (_buf[KEY_INPUT_F1] && !modoKeyOld)
+	{
+		TRACE("RefKeyData\n")
+		func = &KeyState::RefKeyData;
+	}
+
+	auto CheckKey = []() {
+		for ()
+		{
+			if ()
+			{
+				return false;
+			}
+		}
+		return true;
+	};
+
+	for (int i = 0; i < sizeof(_buf); i++)
+	{
+		if (!CheckKey())
+		{
+			continue;
+		}
+
+		if (_buf[i])
+		{
+			_keyCon[static_cast<int>(_confID)] = i;
+			++_confID;
+		}
+	}
+	if (_confID == INPUT_ID::MAX)
 	{
 		TRACE("RefKeyData\n")
 		func = &KeyState::RefKeyData;
