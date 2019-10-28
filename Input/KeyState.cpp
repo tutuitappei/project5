@@ -26,7 +26,7 @@ KeyState::KeyState()
 	}
 	else
 	{
-		fread(, sizeof(), , fp);
+		fread(, sizeof(INPUT_ID::LEFT), static_cast<size_t>(INPUT_ID()), fp);
 
 		fclose(fp);
 	}
