@@ -8,7 +8,7 @@ public:
 	~Vector2Template();
 	int x;
 	int y;
-
+	
 	//‘ã“ü‰‰ŽZŽq
 	Vector2Template& operator = (const Vector2Template& vec);
 

@@ -1,4 +1,4 @@
-#include "Vector2.h"
+//#include "Vector2.h"
 
 
 template<class T>
@@ -20,18 +20,16 @@ Vector2Template<T>::~Vector2Template()
 template<class T>
 Vector2 & Vector2Template<T>::operator=(const Vector2Template<T> & vec)
 {
-	// TODO: return ステートメントをここに挿入します
-	x = vec.x;
-	y = vec.y;
+	this->x = vec.x;
+	this->y = vec.y;
 
 	return *this;
 }
 template<class T>
 Vector2 & Vector2Template<T>::operator+=(const Vector2Template<T> & vec)
 {
-	// TODO: return ステートメントをここに挿入します
-	x += vec.x;
-	y += vec.y;
+	this->x += vec.x;
+	this->y += vec.y;
 
 	return *this;
 }
@@ -39,26 +37,24 @@ template<class T>
 Vector2 & Vector2Template<T>::operator-=(const Vector2Template<T> & vec)
 {
 	// TODO: return ステートメントをここに挿入します
-	x -= vec.x;
-	y -= vec.y;
+	this->x -= vec.x;
+	this->y -= vec.y;
 
 	return *this;
 }
 template<class T>
 Vector2 & Vector2Template<T>::operator*=(T k)
 {
-	// TODO: return ステートメントをここに挿入します
-	x *= k;
-	y *= k;
+	this->x *= k;
+	this->y *= k;
 
 	return *this;
 }
 template<class T>
 Vector2 & Vector2Template<T>::operator/=(T k)
 {
-	// TODO: return ステートメントをここに挿入します
-	x /= k;
-	y /= k;
+	this->x /= k;
+	this->y /= k;
 
 	return *this;
 }
@@ -79,28 +75,28 @@ bool Vector2Template<T>::operator==(const Vector2Template<T> & vec) const
 {
 	return ((this->x == vec.x) && (this->y == vec.y));
 }
-
-bool Vector2::operator!=(const Vector2 & vec) const
+template<class T>
+bool Vector2Template<T>::operator!=(const Vector2Template<T> & vec) const
 {
 	return !((this->x == vec.x) && (this->y == vec.y));
 }
-
-bool Vector2::operator>(const Vector2 & vec) const
+template<class T>
+bool Vector2Template<T>::operator>(const Vector2Template<T> & vec) const
 {
 	return ((this->x > vec.x) && (this->y > vec.y));
 }
-
-bool Vector2::operator>=(const Vector2 & vec) const
+template<class T>
+bool Vector2Template<T>::operator>=(const Vector2Template<T> & vec) const
 {
 	return ((this->x >= vec.x) && (this->y >= vec.y));
 }
-
-bool Vector2::operator<(const Vector2 & vec) const
+template<class T>
+bool Vector2Template<T>::operator<(const Vector2Template<T> & vec) const
 {
 	return ((this->x < vec.x) && (this->y < vec.y));
 }
-
-bool Vector2::operator<=(const Vector2 & vec) const
+template<class T>
+bool Vector2Template<T>::operator<=(const Vector2Template<T> & vec) const
 {
 	return ((this->x <= vec.x) && (this->y <= vec.y));
 }
