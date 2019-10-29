@@ -1,44 +1,45 @@
 #pragma once
-class Vector2
+
+template<class T>class Vector2Template
 {
 public:
-	Vector2();
-	Vector2(int x, int y);
-	~Vector2();
+	Vector2Template();
+	Vector2Template(T x, T y);
+	~Vector2Template();
 	int x;
 	int y;
 
 	//‘ã“ü‰‰ŽZŽq
-	Vector2& operator = (const Vector2& vec);
+	Vector2Template& operator = (const Vector2Template& vec);
 
 	//’P€‰‰ŽZŽq
-	Vector2& operator += (const Vector2& vec);
+	Vector2Template& operator += (const Vector2Template& vec);
 
-	Vector2& operator -= (const Vector2& vec);
+	Vector2Template& operator -= (const Vector2Template& vec);
 	
-	Vector2& operator *= (int k);
+	Vector2Template& operator *= (T k);
 	
-	Vector2& operator /= (int k);
+	Vector2Template& operator /= (T k);
 
-	Vector2 operator + ()const;
+	Vector2Template operator + ()const;
 
-	Vector2 operator - ()const;
+	Vector2Template operator - ()const;
 	
 	//”äŠr‰‰ŽZŽq
-	bool operator == (const Vector2& vec)const;
+	bool operator == (const Vector2Template& vec)const;
 
-	bool operator != (const Vector2& vec)const;
+	bool operator != (const Vector2Template& vec)const;
 
-	bool operator > (const Vector2& vec)const;
+	bool operator > (const Vector2Template& vec)const;
 
-	bool operator >= (const Vector2& vec)const;
+	bool operator >= (const Vector2Template& vec)const;
 
-	bool operator < (const Vector2& vec)const;
+	bool operator < (const Vector2Template& vec)const;
 
-	bool operator <= (const Vector2& vec)const;
+	bool operator <= (const Vector2Template& vec)const;
 
 	//“Y‚¦Žš‰‰ŽZŽq
-	int& operator [] (int i);
+	int& operator [] (T i);
 }; 
 
 //ÍÞ¸ÄÙ‚Ì‰‰ŽZ
@@ -75,3 +76,5 @@ Vector2 operator /(const Vector2& u, const Vector2& v);
 
 // Vector2 % Vector2
 Vector2 operator %(const Vector2& u, const Vector2& v);
+
+#include"details\Vector2.h"

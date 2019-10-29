@@ -9,8 +9,8 @@ enemy::enemy()
 enemy::enemy(EnemyState a)
 {
 	_type = std::get<static_cast<int>(ENEMY_STATE::TYPE)>(a);
-	_pos =
-	_size =
+	_pos = std::get<static_cast<int>(ENEMY_STATE::VECTOR)>(a);
+	_size = std::get<static_cast<int>(ENEMY_STATE::SIZE)>(a);
 
 	init();
 }
@@ -21,6 +21,7 @@ void enemy::Update(void)
 	{
 		return;
 	}
+	moveCtl.UpData();
 }
 
 

@@ -1,24 +1,24 @@
 #include "Vector2.h"
 
 
-
-Vector2::Vector2()
+template<class T>
+Vector2Template<T>::Vector2Template()
 {
 	x = 0;
 	y = 0;
 }
-
-Vector2::Vector2(int x, int y)
+template<class T>
+Vector2Template<T>::Vector2Template(T x, T y)
 {
-	Vector2::x = x;
-	Vector2::y = y;
+	this->x = x;
+	this->y = y;
 }
-
-Vector2::~Vector2()
+template<class T>
+Vector2Template<T>::~Vector2Template()
 {
 }
-
-Vector2 & Vector2::operator=(const Vector2 & vec)
+template<class T>
+Vector2 & Vector2Template<T>::operator=(const Vector2Template<T> & vec)
 {
 	// TODO: return ステートメントをここに挿入します
 	x = vec.x;
@@ -26,8 +26,8 @@ Vector2 & Vector2::operator=(const Vector2 & vec)
 
 	return *this;
 }
-
-Vector2 & Vector2::operator+=(const Vector2 & vec)
+template<class T>
+Vector2 & Vector2Template<T>::operator+=(const Vector2Template<T> & vec)
 {
 	// TODO: return ステートメントをここに挿入します
 	x += vec.x;
@@ -35,8 +35,8 @@ Vector2 & Vector2::operator+=(const Vector2 & vec)
 
 	return *this;
 }
-
-Vector2 & Vector2::operator-=(const Vector2 & vec)
+template<class T>
+Vector2 & Vector2Template<T>::operator-=(const Vector2Template<T> & vec)
 {
 	// TODO: return ステートメントをここに挿入します
 	x -= vec.x;
@@ -44,8 +44,8 @@ Vector2 & Vector2::operator-=(const Vector2 & vec)
 
 	return *this;
 }
-
-Vector2 & Vector2::operator*=(int k)
+template<class T>
+Vector2 & Vector2Template<T>::operator*=(T k)
 {
 	// TODO: return ステートメントをここに挿入します
 	x *= k;
@@ -53,8 +53,8 @@ Vector2 & Vector2::operator*=(int k)
 
 	return *this;
 }
-
-Vector2 & Vector2::operator/=(int k)
+template<class T>
+Vector2 & Vector2Template<T>::operator/=(T k)
 {
 	// TODO: return ステートメントをここに挿入します
 	x /= k;
@@ -62,20 +62,20 @@ Vector2 & Vector2::operator/=(int k)
 
 	return *this;
 }
-
-Vector2 Vector2::operator+() const
+template<class T>
+Vector2 Vector2Template<T>::operator+() const
 {
 
 	return *this;
 }
-
-Vector2 Vector2::operator-() const
+template<class T>
+Vector2 Vector2Template<T>::operator-() const
 {
 
 	return Vector2(-this ->x,-this ->y);
 }
-
-bool Vector2::operator==(const Vector2 & vec) const
+template<class T>
+bool Vector2Template<T>::operator==(const Vector2Template<T> & vec) const
 {
 	return ((this->x == vec.x) && (this->y == vec.y));
 }
