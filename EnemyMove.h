@@ -4,10 +4,12 @@
 class EnemyMove
 {
 public:
-	EnemyMove(Vector2& pos);
+	template<class T>
+	EnemyMove(Vector2Template<T>& pos);
 	~EnemyMove();
 	void UpData(void);
 private:
-	Vector2 & _pos;
+	template<class T>
+	Vector2Template<T> & _pos;
 };
 

@@ -100,8 +100,8 @@ bool Vector2Template<T>::operator<=(const Vector2Template<T> & vec) const
 {
 	return ((this->x <= vec.x) && (this->y <= vec.y));
 }
-
-int & Vector2::operator[](int i)
+template<class T>
+T & Vector2Template<T>::operator[](T i)
 {
 	// TODO: return ステートメントをここに挿入します
 	if (i == 0)
@@ -117,8 +117,8 @@ int & Vector2::operator[](int i)
 		return x;
 	}
 }
-
-Vector2 operator+(const Vector2 & u, const int & k)
+template<class T>
+Vector2 operator+(const Vector2Template<T> & u, const T & k)
 {
 	Vector2 vec;
 	vec.x = u.x + k;
@@ -126,8 +126,8 @@ Vector2 operator+(const Vector2 & u, const int & k)
 
 	return vec;
 }
-
-Vector2 operator-(const Vector2 & u, const int & k)
+template<class T>
+Vector2Template<T> operator-(const Vector2Template<T> & u, const T & k)
 {
 	Vector2 vec;
 	vec.x = u.x - k;
@@ -135,8 +135,8 @@ Vector2 operator-(const Vector2 & u, const int & k)
 
 	return vec;
 }
-
-Vector2 operator*(const Vector2 & u, const int & k)
+template<class T>
+Vector2Template<T> operator*(const Vector2Template<T> & u, const T & k)
 {
 	Vector2 vec;
 	vec.x = u.x * k;
@@ -144,8 +144,8 @@ Vector2 operator*(const Vector2 & u, const int & k)
 
 	return vec;
 }
-
-Vector2 operator*(const int & k, const Vector2 & u)
+template<class T>
+Vector2Template<T> operator*(const T & k, const Vector2Template<T> & u)
 {
 	Vector2 vec;
 	vec.x = k * u.x;
@@ -153,8 +153,8 @@ Vector2 operator*(const int & k, const Vector2 & u)
 
 	return vec;
 }
-
-Vector2 operator/(const Vector2 & u, const int & k)
+template<class T>
+Vector2Template<T> operator/(const Vector2Template<T> & u, const T & k)
 {
 	Vector2 vec;
 	vec.x = u.x / k;
@@ -162,8 +162,8 @@ Vector2 operator/(const Vector2 & u, const int & k)
 
 	return vec;
 }
-
-Vector2 operator%(const Vector2 & u, const int & k)
+template<class T>
+Vector2Template<T> operator%(const Vector2Template<T> & u, const T & k)
 {
 	Vector2 vec;
 	vec.x = u.x % k;
@@ -171,8 +171,8 @@ Vector2 operator%(const Vector2 & u, const int & k)
 
 	return vec;
 }
-
-Vector2 operator+(const Vector2 & u, const Vector2 & v)
+template<class T>
+Vector2Template<T> operator+(const Vector2Template<T> & u, const Vector2Template<T>2 & v)
 {
 	Vector2 vec;
 	vec.x = u.x + v.x;
@@ -180,8 +180,8 @@ Vector2 operator+(const Vector2 & u, const Vector2 & v)
 
 	return vec;
 }
-
-Vector2 operator-(const Vector2 & u, const Vector2 & v)
+template<class T>
+Vector2Template<T> operator-(const Vector2Template<T> & u, const Vector2Template<T> & v)
 {
 	Vector2 vec;
 	vec.x = u.x - v.x;
@@ -189,8 +189,8 @@ Vector2 operator-(const Vector2 & u, const Vector2 & v)
 
 	return vec;
 }
-
-Vector2 operator*(const Vector2 & u, const Vector2 & v)
+template<class T>
+Vector2Template<T> operator*(const Vector2Template<T> & u, const Vector2Template<T> & v)
 {
 	Vector2 vec;
 	vec.x = u.x * v.x;
@@ -198,8 +198,8 @@ Vector2 operator*(const Vector2 & u, const Vector2 & v)
 
 	return vec;
 }
-
-Vector2 operator/(const Vector2 & u, const Vector2 & v)
+template<class T>
+Vector2Template<T> operator/(const Vector2Template<T> & u, const Vector2Template<T> & v)
 {
 	Vector2 vec;
 	vec.x = u.x / v.x;
@@ -207,8 +207,8 @@ Vector2 operator/(const Vector2 & u, const Vector2 & v)
 
 	return vec;
 }
-
-Vector2 operator%(const Vector2 & u, const Vector2 & v)
+template<class T>
+Vector2Template<T> operator%(const Vector2Template<T> & u, const Vector2Template<T> & v)
 {
 	Vector2 vec;
 	vec.x = u.x % v.x;

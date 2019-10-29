@@ -39,42 +39,53 @@ public:
 	bool operator <= (const Vector2Template& vec)const;
 
 	//“Y‚¦Žš‰‰ŽZŽq
-	int& operator [] (T i);
+	T& operator [] (T i);
 }; 
 
 //ÍÞ¸ÄÙ‚Ì‰‰ŽZ
 
 // Vector2 + int
-Vector2 operator +(const Vector2& u, const int& k);
+template<class T>
+Vector2Template<T> operator +(const Vector2Template<T>& u, const T& k);
 
 // Vector2 - int
-Vector2 operator -(const Vector2& u, const int& k);
+template<class T>
+Vector2Template<T> operator -(const Vector2Template<T>& u, const T& k);
 
 // Vector2 * int
-Vector2 operator *(const Vector2& u, const int& k);
+template<class T>
+Vector2Template<T> operator *(const Vector2Template<T>& u, const T& k);
 
 // int * Vector2
-Vector2 operator *(const int& k, const Vector2& u);
+template<class T>
+Vector2Template<T> operator *(const T& k, const Vector2Template<T>& u);
 
 // Vector2 / int
-Vector2 operator /(const Vector2& u, const int& k);
+template<class T>
+Vector2Template<T> operator /(const Vector2Template<T>& u, const T& k);
 
 // Vector2 % int
-Vector2 operator %(const Vector2& u, const int& k);
+template<class T>
+Vector2Template<T> operator %(const Vector2Template<T>& u, const T& k);
 
 // Vector2 + Vector2
-Vector2 operator +(const Vector2& u,const Vector2& v);
+template<class T>
+Vector2Template<T> operator +(const Vector2Template<T>& u,const Vector2Template<T>& v);
 
 // Vector2 - Vector2
-Vector2 operator -(const Vector2& u, const Vector2& v);
+template<class T>
+Vector2Template<T> operator -(const Vector2Template<T>& u, const Vector2Template<T>& v);
 
 // Vector2 * Vector2
-Vector2 operator *(const Vector2& u, const Vector2& v);
+template<class T>
+Vector2Template<T> operator *(const Vector2&Template<T> u, const Vector2Template<T>& v);
 
 // Vector2 - Vector2
-Vector2 operator /(const Vector2& u, const Vector2& v);
+template<class T>
+Vector2Template<T> operator /(const Vector2Template<T>& u, const Vector2Template<T>& v);
 
 // Vector2 % Vector2
-Vector2 operator %(const Vector2& u, const Vector2& v);
+template<class T>
+Vector2Template<T> operator %(const Vector2Template<T>& u, const Vector2Template<T>& v);
 
 #include"details\Vector2.h"
