@@ -8,6 +8,10 @@ enemy::enemy()
 
 enemy::enemy(EnemyState a)
 {
+	_type = std::get<static_cast<int>(ENEMY_STATE::TYPE)>(a);
+	_pos =
+	_size =
+
 	init();
 }
 
