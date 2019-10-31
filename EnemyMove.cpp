@@ -4,6 +4,7 @@ template<class T>
 EnemyMove::EnemyMove(Vector2Template<double>& pos):_pos(pos)//
 {
 	_move = nullptr;
+	_aimCnt = -1;
 }
 
 
@@ -18,12 +19,27 @@ void EnemyMove::UpData(void)
 
 bool EnemyMove::SetMoveState(MoveState & state, bool newFlag)
 {
-	if (newFlag == true)
+	if (newFlag)
 	{
-		
+		_aim.clear();
 	}
-
+	_aim = std::move(state);
+	if (newFlag)
+	{
+		SetMovePrg();
+	}
 	return false;
+}
+
+void EnemyMove::SetMovePrg(void)
+{
+	_aimCnt++;
+	if (_aimCnt >= _aim.size())
+	{
+		return;
+	}
+	_startPos = ;
+	_endPos = ;
 }
 
 void EnemyMove::MoveSigmoid(void)

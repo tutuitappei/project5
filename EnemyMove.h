@@ -21,6 +21,7 @@ public:
 	void UpData(void);
 	bool SetMoveState(MoveState& state,bool newFlag);
 private:
+	void SetMovePrg(void);
 
 	void (EnemyMove::*_move)(void);
 
@@ -30,8 +31,13 @@ private:
 	void Wait(void);
 	void MoveLR(void);
 
-	MoveState _aim;//
-	template<class T>
+	MoveState _aim;
+	int _aimCnt;
+	
 	Vector2Template<double> & _pos;//
+	
+	Vector2Template<double> _startPos;
+	
+	Vector2Template<double> _endPos;
 };
 
