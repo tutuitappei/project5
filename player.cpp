@@ -8,7 +8,7 @@ player::player()
 	init();
 }
 
-player::player(Vector2 pos, Vector2 size)
+player::player(int pos, int size)//
 {
 	_pos = pos;
 	_size = size;
@@ -35,7 +35,7 @@ void player::Update(void)
 		}
 	};
 
-	move(_input, INPUT_ID::LEFT,  _pos.x, -2);
+	move(_input, INPUT_ID::LEFT,  _pos.x, -2);//
 	move(_input, INPUT_ID::RIGHT, _pos.x, +2);
 	move(_input, INPUT_ID::UP,    _pos.y, -2);
 	move(_input, INPUT_ID::DOWN,  _pos.y, +2);

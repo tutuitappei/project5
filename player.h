@@ -7,7 +7,7 @@ class player :
 {
 public:
 	player();
-	player(Vector2 pos,Vector2 size);
+	player(int pos,int size);//
 	void Update(void) override;
 	~player();
 

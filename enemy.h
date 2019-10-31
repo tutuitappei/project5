@@ -29,7 +29,7 @@ public:
 	~enemy();
 
 private:
-	EnemyMove moveCtl{ _pos };
+	EnemyMove moveCtl{ _pos };//
 	void init(void);
 	ENEMY_TYPE _type;
 };

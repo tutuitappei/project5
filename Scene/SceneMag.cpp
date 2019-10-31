@@ -33,14 +33,14 @@ void SceneMag::Draw(void)
 			std::get<static_cast<int>(DRAW_QUE::X)>(*date),
 			std::get<static_cast<int>(DRAW_QUE::Y)>(*date),
 			1.0,
-			0,
+			std::get<static_cast<int>(DRAW_QUE::RAD)>(*date),
 			std::get<static_cast<int>(DRAW_QUE::IMAGE)>(*date),
 			true);
 	}
 	ScreenFlip();
 }
 
-SceneMag::SceneMag():ScreenSize{800,600}
+SceneMag::SceneMag():ScreenSize{800,600}//
 {
 }
 
@@ -85,7 +85,7 @@ bool SceneMag::SysInit(void)
 	//ｼｽﾃﾑ処理
 	SetWindowText("kadai5");
 
-	SetGraphMode(ScreenSize.x, ScreenSize.y, 16);				//ﾌﾟﾚｲ画面を800*600ﾄﾞｯﾄ、65536色ﾓｰﾄﾞに設定
+	SetGraphMode(ScreenSize.x, ScreenSize.y, 16);	//			//ﾌﾟﾚｲ画面を800*600ﾄﾞｯﾄ、65536色ﾓｰﾄﾞに設定
 	ChangeWindowMode(true);										//画面windowﾓｰﾄﾞ
 	if (DxLib_Init() == -1)										//DXﾗｲﾌﾞﾗﾘの初期化処理
 	{

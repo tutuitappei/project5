@@ -49,5 +49,6 @@ protected:
 
 	Vector2Template<double> _pos;
 	Vector2Template<int> _size;
+	double _rad;
 };
 

@@ -6,8 +6,8 @@ public:
 	Vector2Template();
 	Vector2Template(T x, T y);
 	~Vector2Template();
-	int x;
-	int y;
+	T x;
+	T y;
 	
 	//‘ã“ü‰‰ŽZŽq
 	Vector2Template& operator = (const Vector2Template& vec);

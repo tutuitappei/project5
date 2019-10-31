@@ -5,7 +5,7 @@
 #include <comoc/Vector2.h>
 #include"BaseScene.h"
 
-using DrawQueT = std::tuple<int, int, int>;
+using DrawQueT = std::tuple<int, double, double, double>;//
 
 #define lpSceneMag SceneMag::GetInstance()
 
@@ -13,7 +13,8 @@ enum class DRAW_QUE	//enum clase‚ª‚ ‚é‚±‚Æ‚Å“¯‚¶‚à‚Ì‚Å‚à•Ê‚ÌŒ^‚Æ‚µ‚Äˆµ‚¦‚é@ˆÀ‘S
 {
 	IMAGE,
 	X,
-	Y
+	Y,
+	RAD
 };
 
 class SceneMag
@@ -44,9 +45,9 @@ public:
 
 	void Run(void);
 
-	bool AddDrawQue(DrawQueT dQue);
+	bool AddDrawQue(DrawQueT dQue);//
 
-	const Vector2 ScreenSize;
+	const int ScreenSize;
 private:
 	static SceneMag *sInstance;
 
