@@ -15,7 +15,11 @@ EnemyMove::~EnemyMove()
 template<class T>
 void EnemyMove::UpData(void)
 {
-	_pos.x++;//
+	if (_move != nullptr)
+	{
+		(this->*_move)();
+	}
+	//_pos.x++;//
 }
 
 bool EnemyMove::SetMoveState(MoveState & state, bool newFlag)
@@ -45,6 +49,7 @@ void EnemyMove::SetMovePrg(void)
 	{
 	case MOVE_TYPE::WAIT:
 		_move = &EnemyMove::Wait;
+		cnt = 0;
 		break;
 	case MOVE_TYPE::SIGMOID:
 		_move = &EnemyMove::MoveSigmoid;
@@ -60,6 +65,7 @@ void EnemyMove::SetMovePrg(void)
 		break;
 	default:
 		AST();
+		_move = &EnemyMove::Wait;
 		break;
 	}
 }
@@ -78,6 +84,11 @@ void EnemyMove::PitIn(void)
 
 void EnemyMove::Wait(void)
 {
+	cnt++;
+	if (cnt >= _aim[_aimCnt].second.x)
+	{
+		SetMovePrg();
+	}
 }
 
 void EnemyMove::MoveLR(void)

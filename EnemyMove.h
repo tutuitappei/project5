@@ -31,6 +31,9 @@ private:
 	void Wait(void);
 	void MoveLR(void);
 
+	int cnt;
+
+
 	MoveState _aim;
 	int _aimCnt;
 	

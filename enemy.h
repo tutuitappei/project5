@@ -14,10 +14,11 @@ enum class ENEMY_STATE
 	TYPE,
 	VECTOR,
 	SIZE,
+	AIM,
 	MAX
 };
 
-using EnemyState = std::tuple<ENEMY_TYPE, ENEMY_STATE::VECTOR, ENEMY_STATE::SIZE>;
+using EnemyState = std::tuple<ENEMY_TYPE, ENEMY_STATE::VECTOR, ENEMY_STATE::SIZE, MoveState&>;
 
 class enemy :
 	public Obj
@@ -29,7 +30,7 @@ public:
 	~enemy();
 
 private:
-	EnemyMove moveCtl{ _pos };//
+	EnemyMove _moveCtl{ _pos };
 	void init(void);
 	ENEMY_TYPE _type;
 };
