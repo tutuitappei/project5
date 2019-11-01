@@ -1,4 +1,5 @@
 #include "EnemyMove.h"
+#include"_debug\_DebugConOut.h"
 
 template<class T>
 EnemyMove::EnemyMove(Vector2Template<double>& pos):_pos(pos)//
@@ -38,8 +39,22 @@ void EnemyMove::SetMovePrg(void)
 	{
 		return;
 	}
-	_startPos = ;
+	_startPos = _pos;
 	_endPos = ;
+	switch ()
+	{
+	case :
+		break;
+	case:
+		break;
+	case:
+		break;
+	case:
+		break;
+	default:
+		AST();
+		break;
+	}
 }
 
 void EnemyMove::MoveSigmoid(void)
