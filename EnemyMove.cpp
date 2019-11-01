@@ -40,16 +40,23 @@ void EnemyMove::SetMovePrg(void)
 		return;
 	}
 	_startPos = _pos;
-	_endPos = ;
-	switch ()
+	_endPos = _aim[_aimCnt].second;
+	switch (_aim[_aimCnt].first)
 	{
-	case :
+	case MOVE_TYPE::WAIT:
+		_move = &EnemyMove::Wait;
 		break;
-	case:
+	case MOVE_TYPE::SIGMOID:
+		_move = &EnemyMove::MoveSigmoid;
 		break;
-	case:
+	case MOVE_TYPE::SPIRAL:
+		_move = &EnemyMove::MoveSpiral;
 		break;
-	case:
+	case MOVE_TYPE::PITIN:
+		_move = &EnemyMove::PitIn;
+		break;
+	case MOVE_TYPE::LR:
+		_move = &EnemyMove::MoveLR;
 		break;
 	default:
 		AST();
