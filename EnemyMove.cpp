@@ -1,7 +1,6 @@
 #include "EnemyMove.h"
 #include"_debug\_DebugConOut.h"
 
-template<class T>
 EnemyMove::EnemyMove(Vector2db& pos):_pos(pos)//
 {
 	_move = nullptr;
