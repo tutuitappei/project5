@@ -13,7 +13,7 @@ const VecInt & ImageMng::GetID(const std::string & key)
 	return GetID(key,key);
 }
 
-const VecInt & ImageMng::GetID(const std::string & key, const std::string & fileName)
+const VecInt & ImageMng::GetID(const std::string & key, const std::string fileName)
 {
 	// TODO: return ステートメントをここに挿入します
 	if (imgMap.find(key) == imgMap.end())
@@ -24,7 +24,7 @@ const VecInt & ImageMng::GetID(const std::string & key, const std::string & file
 	return imgMap[key];
 }
 
-const VecInt & ImageMng::GetID(const std::string & key, const std::string & fileName, const Vector2 & divSize, const Vector2 & divCnt)
+const VecInt & ImageMng::GetID(const std::string & key, const std::string fileName, const Vector2in divSize, const Vector2in divCnt)
 {
 	// TODO: return ステートメントをここに挿入します
 	if (imgMap.find(key) == imgMap.end())

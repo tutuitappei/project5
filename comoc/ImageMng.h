@@ -27,9 +27,8 @@ public:
 	//}
 
 	const  VecInt& GetID(const std::string& key);
-	const  VecInt& GetID(const std::string& key, const std::string& fileName);
-	template<class T>
-	const  VecInt& GetID(const std::string& key, const std::string& fileName, const Vector2Template<T>& divSize, const Vector2Template<T>& divCnt);
+	const  VecInt& GetID(const std::string& key, const std::string fileName);
+	const  VecInt& GetID(const std::string& key, const std::string fileName, const Vector2in divSize, const Vector2in divCnt);
 
 private:
 	struct ImageMngDeleter

@@ -2,7 +2,7 @@
 #include"_debug\_DebugConOut.h"
 
 template<class T>
-EnemyMove::EnemyMove(Vector2Template<double>& pos):_pos(pos)//
+EnemyMove::EnemyMove(Vector2db& pos):_pos(pos)//
 {
 	_move = nullptr;
 	_aimCnt = -1;
@@ -12,7 +12,7 @@ EnemyMove::EnemyMove(Vector2Template<double>& pos):_pos(pos)//
 EnemyMove::~EnemyMove()
 {
 }
-template<class T>
+
 void EnemyMove::UpData(void)
 {
 	if (_move != nullptr)
@@ -80,7 +80,7 @@ void EnemyMove::MoveSpiral(void)
 
 void EnemyMove::PitIn(void)
 {
-	_startPos = _endPos;
+	_startPos = { -(30.0 / 2.0),-(32.0 / 2.0) };
 	_endPos = ;
 
 

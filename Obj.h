@@ -48,7 +48,7 @@ protected:
 
 
 	Vector2db _pos;
-	Vector2in _size;
+	Vector2db _size;
 	double _rad;
 };
 
