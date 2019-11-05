@@ -11,7 +11,7 @@ enum class MOVE_TYPE
 	LR
 };
 
-using MoveState = std::vector<std::pair<MOVE_TYPE, Vector2Template<double>>>;//
+using MoveState = std::vector<std::pair<MOVE_TYPE, Vector2db>>;
 
 class EnemyMove
 {
