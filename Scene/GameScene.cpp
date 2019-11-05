@@ -23,9 +23,9 @@ GameScene::GameScene()
 		for (int j = 0; j < 10; j++)
 		{
 			MoveState tmpMoveState;
-			tmpMoveState.emplace_back(MOVE_TYPE::WAIT, Vector2Template<double>{ 180.0, 0, 0 });//
-			tmpMoveState.emplace_back(MOVE_TYPE::LR, Vector2Template<double>{ 180.0, 0, 0 });//
-			EnemyState dete = {ENEMY_TYPE::A,{50*j,50*i}, {0,0}, tmpMoveState };
+			tmpMoveState.emplace_back(MOVE_TYPE::WAIT, Vector2db{ 180.0, 0, 0 });//
+			tmpMoveState.emplace_back(MOVE_TYPE::LR, Vector2db{ 180.0, 0, 0 });//
+			EnemyState dete = {ENEMY_TYPE::A,{50*j,40*i}, {0,0}, tmpMoveState };
 			_objList.emplace_back(new enemy(dete));
 		}
 	}
