@@ -16,15 +16,16 @@ GameScene::GameScene()
 	lpImageMng.GetID("PL”š”­", "image/pl_blast.png", { 64,64 }, { 4,1 });
 	
 	_objList.emplace_back(
-		new player({ 100,100 }, { 0,0 }));
+			new player({ 400.0,578.0 }, { 0.0,0.0 })
+		);
 
 	for (int i = 0; i < 5; i++)
 	{
 		for (int j = 0; j < 10; j++)
 		{
 			MoveState tmpMoveState;
-			tmpMoveState.emplace_back(MOVE_TYPE::WAIT, Vector2db{ 180.0, 0, 0 });//
-			tmpMoveState.emplace_back(MOVE_TYPE::LR, Vector2db{ 180.0, 0, 0 });//
+			tmpMoveState.emplace_back(MOVE_TYPE::WAIT, Vector2db{ 180.0,0.0 });//
+			tmpMoveState.emplace_back(MOVE_TYPE::LR, Vector2db{ 400.0,400.0 });//
 			EnemyState dete = {ENEMY_TYPE::A,{50*j,40*i}, {0,0}, tmpMoveState };
 			_objList.emplace_back(new enemy(dete));
 		}

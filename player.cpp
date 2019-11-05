@@ -8,7 +8,7 @@ player::player()
 	init();
 }
 
-player::player(int pos, int size)//
+player::player(Vector2db pos, Vector2db size)//
 {
 	_pos = pos;
 	_size = size;
@@ -25,7 +25,7 @@ void player::Update(void)
 	(*_input).Updata();
 	//_input->Updata();
 
-	auto move = [](std::weak_ptr<InputState> keyDate, const INPUT_ID id, int& pNum, const int speed) {
+	auto move = [](std::weak_ptr<InputState> keyDate, const INPUT_ID id, double& pNum, const double speed) {
 		if (!keyDate.expired())
 		{
 			if ((*keyDate.lock()).state(id).first)
@@ -37,6 +37,8 @@ void player::Update(void)
 
 	move(_input, INPUT_ID::LEFT,  _pos.x, -2);//
 	move(_input, INPUT_ID::RIGHT, _pos.x, +2);
+	//move(_input, INPUT_ID::RIGHT, _pos.x, 2.0);
+	//move(_input, INPUT_ID::LEFT, _pos.x, -2.0);
 	move(_input, INPUT_ID::UP,    _pos.y, -2);
 	move(_input, INPUT_ID::DOWN,  _pos.y, +2);
 

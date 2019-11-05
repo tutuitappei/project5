@@ -141,13 +141,13 @@
     <ClCompile Include="player.cpp" />
     <ClCompile Include="Scene\GameScene.cpp" />
     <ClCompile Include="Scene\BaseScene.cpp" />
-    <ClCompile Include="comoc\Vector2.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Scene\SceneMag.cpp" />
     <ClCompile Include="Scene\Title.cpp" />
     <ClCompile Include="_debug\_DebugConOut.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="comoc\details\Vector2.h" />
     <ClInclude Include="comoc\ImageMng.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="EnemyMove.h" />
