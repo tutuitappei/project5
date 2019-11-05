@@ -20,7 +20,7 @@ GameScene::GameScene()
 
 	for (int i = 0; i < 5; i++)
 	{
-		for (int j = 0; j < 5; j++)
+		for (int j = 0; j < 10; j++)
 		{
 			MoveState tmpMoveState;
 			tmpMoveState.emplace_back(MOVE_TYPE::WAIT, Vector2Template<double>{ 180.0, 0, 0 });//

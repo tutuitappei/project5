@@ -80,6 +80,7 @@ void EnemyMove::MoveSpiral(void)
 
 void EnemyMove::PitIn(void)
 {
+	
 }
 
 void EnemyMove::Wait(void)
