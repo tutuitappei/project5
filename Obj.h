@@ -47,8 +47,8 @@ protected:
 	bool DestroyPrpc(void);
 
 
-	Vector2Template<double> _pos;
-	Vector2Template<int> _size;
+	Vector2db _pos;
+	Vector2in _size;
 	double _rad;
 };
 

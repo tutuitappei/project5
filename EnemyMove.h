@@ -16,7 +16,7 @@ using MoveState = std::vector<std::pair<MOVE_TYPE, Vector2db>>;
 class EnemyMove
 {
 public:
-	EnemyMove(Vector2Template<double>& pos);//
+	EnemyMove(Vector2db& pos);//
 	~EnemyMove();
 	void UpData(void);
 	bool SetMoveState(MoveState& state,bool newFlag);
@@ -37,10 +37,10 @@ private:
 	MoveState _aim;
 	int _aimCnt;
 	
-	Vector2Template<double> & _pos;//
+	Vector2db & _pos;//
 	
-	Vector2Template<double> _startPos;
+	Vector2db _startPos;
 	
-	Vector2Template<double> _endPos;
+	Vector2db _endPos;
 };
 
