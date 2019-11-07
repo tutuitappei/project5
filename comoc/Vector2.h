@@ -141,4 +141,7 @@ Vector2Template<T> operator / (const Vector2Template<T>& u, int a);
 template<class T>
 Vector2Template<T> operator % (const Vector2Template<T>& u, int a);
 
+template<class T>
+Vector2Template<T> abs (const Vector2Template<T>& u);
+
 #include "./details/Vector2.h"
