@@ -42,5 +42,7 @@ private:
 	Vector2db _startPos;
 	
 	Vector2db _endPos;
+
+	double _rad;
 };
 

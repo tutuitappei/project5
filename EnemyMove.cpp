@@ -79,12 +79,18 @@ void EnemyMove::MoveSpiral(void)
 
 void EnemyMove::PitIn(void)
 {
-
-	_pos.x = _endPos.x - _startPos.x;
-	_pos.y = _endPos.x - _startPos.y;
-	if (_endPos == _pos)
+	Vector2db _length;
+	if (abs((_endPos-_startPos)/120.0) > abs(_endPos - _pos))//abs((_endPos-_startPos)/120.0)‚ğŠÖ”‰»
 	{
+		_pos = _endPos;
+		_rad = 0.0;
 		SetMovePrg();
+	}
+	else
+	{
+		_pos += (_endPos - _startPos) / 120.0;
+		_length = _endPos - _pos;
+		_rad = std::atan2(_length.y, _length.x) + (90 * 3.141592) / 180;
 	}
 }
 
