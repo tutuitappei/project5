@@ -79,17 +79,12 @@ void EnemyMove::MoveSpiral(void)
 
 void EnemyMove::PitIn(void)
 {
-	if (_endPos != _pos)
-	{
 
-	}
-	else if (_endPos == _pos)
+	_pos.x = _endPos.x - _startPos.x;
+	_pos.y = _endPos.x - _startPos.y;
+	if (_endPos == _pos)
 	{
 		SetMovePrg();
-	}
-	else
-	{
-		AST();
 	}
 }
 

@@ -25,6 +25,7 @@ GameScene::GameScene()
 		{
 			MoveState tmpMoveState;
 			tmpMoveState.emplace_back(MOVE_TYPE::WAIT, Vector2db{ 180.0,0.0 });//
+			tmpMoveState.emplace_back(MOVE_TYPE::PITIN, Vector2db{ 180.0,0.0 });//
 			tmpMoveState.emplace_back(MOVE_TYPE::LR, Vector2db{ 400.0,400.0 });//
 			EnemyState dete = {ENEMY_TYPE::A,{50*j,40*i}, {0,0}, tmpMoveState };
 			_objList.emplace_back(new enemy(dete));
