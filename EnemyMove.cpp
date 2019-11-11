@@ -72,7 +72,7 @@ void EnemyMove::SetMovePrg(void)
 void EnemyMove::MoveSigmoid(void)
 {
 	double _moveCnt;
-
+	
 	if (_pos.x >= _endPos.x)
 	{
 		_pos = _endPos;
@@ -80,7 +80,7 @@ void EnemyMove::MoveSigmoid(void)
 	}
 	else
 	{
-		
+		_pos.x = (1/(1+exp(-_endPos.x)));
 	}
 }
 
