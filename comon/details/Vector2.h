@@ -218,7 +218,7 @@
 //}
 
 
-#include<comon\Vector2.h>
+#include<Vector2.h>
 
 
 template<class T>
