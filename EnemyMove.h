@@ -1,5 +1,5 @@
 #pragma once
-#include<comoc\Vector2.h>
+#include<comon\Vector2.h>
 #include<vector>
 
 enum class MOVE_TYPE

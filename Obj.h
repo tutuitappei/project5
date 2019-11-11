@@ -3,7 +3,7 @@
 #include<vector>
 #include<map>
 #include<memory>
-#include"comoc\Vector2.h"
+#include"comon\Vector2.h"
 
 
 enum class STATE

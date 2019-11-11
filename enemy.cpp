@@ -1,5 +1,5 @@
 #include "enemy.h"
-#include"comoc\ImageMng.h"
+#include"comon\ImageMng.h"
 
 enemy::enemy()
 {
