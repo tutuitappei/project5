@@ -71,7 +71,7 @@ void EnemyMove::SetMovePrg(void)
 
 void EnemyMove::MoveSigmoid(void)
 {
-	double _moveCnt;
+	Vector2db _moveCnt;
 	
 	if (_pos.x >= _endPos.x)
 	{
@@ -80,7 +80,8 @@ void EnemyMove::MoveSigmoid(void)
 	}
 	else
 	{
-		_pos.y = (1/(1+exp(-_endPos.x)));
+		_pos.x = ;
+		_pos.y = (1.0/(1.0+exp(-_endPos.x)));
 	}
 }
 
