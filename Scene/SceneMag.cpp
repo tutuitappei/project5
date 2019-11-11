@@ -1,4 +1,5 @@
 #include <Dxlib.h>
+#include<_debug\_DebugDispOut.h>
 #include "SceneMag.h"
 #include"GameScene.h"
 #include"Title.h"
@@ -7,6 +8,7 @@ SceneMag* SceneMag::sInstance = nullptr;
 
 void SceneMag::Draw(void)
 {
+
 	SetDrawScreen(DX_SCREEN_BACK);
 	ClsDrawScreen();
 

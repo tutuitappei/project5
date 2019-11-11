@@ -145,6 +145,7 @@
     <ClCompile Include="Scene\SceneMag.cpp" />
     <ClCompile Include="Scene\Title.cpp" />
     <ClCompile Include="_debug\_DebugConOut.cpp" />
+    <ClCompile Include="_debug\_DebugDispOut.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="comon\details\Vector2.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Scene\SceneMag.h" />
     <ClInclude Include="Scene\Title.h" />
     <ClInclude Include="_debug\_DebugConOut.h" />
+    <ClInclude Include="_debug\_DebugDispOut.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

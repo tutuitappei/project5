@@ -71,6 +71,7 @@ void EnemyMove::SetMovePrg(void)
 
 void EnemyMove::MoveSigmoid(void)
 {
+	double _moveCnt;
 
 	if (_pos.x >= _endPos.x)
 	{
@@ -81,7 +82,6 @@ void EnemyMove::MoveSigmoid(void)
 	{
 		
 	}
-	
 }
 
 void EnemyMove::MoveSpiral(void)
