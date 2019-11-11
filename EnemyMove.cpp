@@ -80,7 +80,7 @@ void EnemyMove::MoveSigmoid(void)
 	}
 	else
 	{
-		_pos.x = (1/(1+exp(-_endPos.x)));
+		_pos.y = (1/(1+exp(-_endPos.x)));
 	}
 }
 
