@@ -2,7 +2,7 @@
 #include<memory>
 #include<tuple>  //3‚ÂˆÈã‚Ìˆá‚¤Œ^‚Ì—v‘f‚ğæ‚èˆµ‚¤(2‚Â‚Ì‚Ípair)
 #include<vector>
-#include <comoc/Vector2.h>
+#include <comon/Vector2.h>
 #include"BaseScene.h"
 
 using DrawQueT = std::tuple<int, double, double, double>;//

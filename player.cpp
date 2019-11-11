@@ -1,6 +1,6 @@
 #include<DxLib.h>
 #include "player.h"
-#include"comoc\ImageMng.h"
+#include"comon\ImageMng.h"
 #include"Input\KeyState.h"
 
 player::player()

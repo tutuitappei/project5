@@ -2,7 +2,7 @@
 #include<algorithm>
 #include<_DebugConOut.h>
 #include "GameScene.h"
-#include<comoc\ImageMng.h>
+#include<comon\ImageMng.h>
 #include<player.h>
 #include<enemy.h>
 

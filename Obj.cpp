@@ -1,7 +1,7 @@
 #include<Dxlib.h>
 #include "Obj.h"
 #include<map>
-#include"comoc\ImageMng.h"
+#include"comon\ImageMng.h"
 #include"Scene\SceneMag.h"
 
 
