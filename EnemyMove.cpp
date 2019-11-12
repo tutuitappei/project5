@@ -55,6 +55,7 @@ void EnemyMove::SetMovePrg(void)
 		break;
 	case MOVE_TYPE::SPIRAL:
 		_move = &EnemyMove::MoveSpiral;
+		r ;
 		break;
 	case MOVE_TYPE::PITIN:
 		_move = &EnemyMove::PitIn;
@@ -71,7 +72,7 @@ void EnemyMove::SetMovePrg(void)
 
 void EnemyMove::MoveSigmoid(void)
 {
-	Vector2db _moveCnt;
+	Vector2db _moveCnt = _startPos;
 	
 	if (_pos.x >= _endPos.x)
 	{
@@ -80,14 +81,22 @@ void EnemyMove::MoveSigmoid(void)
 	}
 	else
 	{
-		_pos.x = _endPos.x-_startPos.x;
+		_pos.x = _moveCnt.x;
 		_pos.y = (1.0/(1.0+exp(-_endPos.x)));
+		_moveCnt.x++;
 	}
 }
 
 void EnemyMove::MoveSpiral(void)
 {
-
+	if (_pos == _endPos)
+	{
+		//SetMovePrg();
+	}
+	else
+	{
+		
+	}
 }
 
 void EnemyMove::PitIn(void)
