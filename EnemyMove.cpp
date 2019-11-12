@@ -80,13 +80,14 @@ void EnemyMove::MoveSigmoid(void)
 	}
 	else
 	{
-		_pos.x = ;
+		_pos.x = _endPos.x-_startPos.x;
 		_pos.y = (1.0/(1.0+exp(-_endPos.x)));
 	}
 }
 
 void EnemyMove::MoveSpiral(void)
 {
+
 }
 
 void EnemyMove::PitIn(void)

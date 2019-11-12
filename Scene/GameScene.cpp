@@ -18,15 +18,15 @@ GameScene::GameScene()
 	_objList.emplace_back(
 			new player({ 400.0,578.0 }, { 0.0,0.0 })
 		);
-
-	for (int i = 0; i < 1; i++)
+	
+	for (int i = 0; i < 5; i++)
 	{
-		for (int j = 0; j < 1; j++)
+		for (int j = 0; j < 10; j++)
 		{
 			MoveState tmpMoveState;
 			tmpMoveState.emplace_back(MOVE_TYPE::WAIT, Vector2db{ (30.0*j),0.0 });//
-			tmpMoveState.emplace_back(MOVE_TYPE::SIGMOID, Vector2db{ 100.0,500.0 });//
-			//tmpMoveState.emplace_back(MOVE_TYPE::PITIN, Vector2db{ 180.0,40.0 });//
+			tmpMoveState.emplace_back(MOVE_TYPE::SIGMOID, Vector2db{500.0 ,500.0});//
+			tmpMoveState.emplace_back(MOVE_TYPE::SPIRAL, Vector2db{ 180.0,40.0 });//
 			tmpMoveState.emplace_back(MOVE_TYPE::LR, Vector2db{ 400.0,400.0 });//
 			EnemyState dete = {ENEMY_TYPE::A,{50*j,40*i}, {0,0}, tmpMoveState };
 			_objList.emplace_back(new enemy(dete));
