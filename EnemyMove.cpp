@@ -95,7 +95,7 @@ void EnemyMove::MoveSpiral(void)
 	}
 	else
 	{
-
+		
 		r--;
 	}
 }

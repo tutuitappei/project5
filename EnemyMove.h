@@ -46,5 +46,7 @@ private:
 	double r;
 
 	double _rad;
+
+	double rag;
 };
 
