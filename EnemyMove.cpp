@@ -55,7 +55,7 @@ void EnemyMove::SetMovePrg(void)
 		break;
 	case MOVE_TYPE::SPIRAL:
 		_move = &EnemyMove::MoveSpiral;
-		r ;
+		r = abs(_endPos.x - _startPos.x);
 		break;
 	case MOVE_TYPE::PITIN:
 		_move = &EnemyMove::PitIn;
@@ -91,11 +91,12 @@ void EnemyMove::MoveSpiral(void)
 {
 	if (_pos == _endPos)
 	{
-		//SetMovePrg();
+		SetMovePrg();
 	}
 	else
 	{
-		
+
+		r--;
 	}
 }
 
