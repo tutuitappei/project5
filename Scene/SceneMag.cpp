@@ -10,7 +10,7 @@ SceneMag* SceneMag::sInstance = nullptr;
 
 void SceneMag::Draw(void)
 {
-
+	std::sort<>(LAYER::BG, LAYER::UI);
 
 
 	SetDrawScreen(DX_SCREEN_BACK);
