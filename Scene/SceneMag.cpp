@@ -63,7 +63,7 @@ void SceneMag::Run(void)
 	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0)
 	{
 		_drawList.clear();
-		AddDrawQue({ IMAGE_ID()[0],0,0,0,1000,LAYER::UI });
+		AddDrawQue({ IMAGE_ID("˜g")[0],0,0,0,1000,LAYER::UI });
 		_activeScene = (*_activeScene).Update(std::move(_activeScene));
 		/*_activeScene->Update();*/
 		Draw();
@@ -102,7 +102,7 @@ bool SceneMag::SysInit(void)
 
 	/*srand((unsigned int)time(NULL));*/
 
-
+	ImageMng::GetInstance().GetID("˜g","image/frame.png");
 
 	return false;
 }
