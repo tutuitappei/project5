@@ -55,7 +55,7 @@ public:
 
 	bool AddDrawQue(DrawQueT dQue);//
 
-	const int ScreenSize;
+	const Vector2in ScreenSize;
 private:
 	static SceneMag *sInstance;
 

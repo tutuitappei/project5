@@ -1,7 +1,8 @@
 #include <Dxlib.h>
+#include<algorithm>
 #include<_debug\_DebugDispOut.h>
-#include "SceneMag.h"
 #include<comon\ImageMng.h>
+#include "SceneMag.h"
 #include"GameScene.h"
 #include"Title.h"
 
@@ -45,7 +46,7 @@ void SceneMag::Draw(void)
 	ScreenFlip();
 }
 
-SceneMag::SceneMag():ScreenSize{800,600}//
+SceneMag::SceneMag() : ScreenSize{ 800,600 }//
 {
 }
 
