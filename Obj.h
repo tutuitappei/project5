@@ -46,6 +46,7 @@ protected:
 	bool _dead;
 	bool DestroyPrpc(void);
 
+	int zOrder;
 
 	Vector2db _pos;
 	Vector2db _size;

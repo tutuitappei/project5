@@ -32,6 +32,7 @@ private:
 	void MoveLR(void);
 
 	int cnt;
+	int spCnt;
 
 
 	MoveState _aim;

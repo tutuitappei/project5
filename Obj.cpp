@@ -12,6 +12,7 @@ Obj::Obj()
 	_animFrame = 0;
 	_animCnt = 0;
 	_rad = 0;
+	zOrder = 0;
 }
 
 void Obj::Draw()
@@ -42,12 +43,12 @@ void Obj::Draw()
 		_animCnt = 0;
 	}
 
-	lpSceneMag.AddDrawQue({ _animMap[_state][_animFrame].first, _pos.x,_pos.y,_rad });
+	lpSceneMng.AddDrawQue({ _animMap[_state][_animFrame].first, _pos.x, _pos.y, _rad ,zOrder, LAYER::CHAR });
 }
 
 void Obj::Draw(int id)
 {
-	lpSceneMag.AddDrawQue({ id,_pos.x,_pos.y,_rad });
+	lpSceneMng.AddDrawQue({ id,_pos.x,_pos.y,_rad, zOrder, LAYER::CHAR });
 
 }
 

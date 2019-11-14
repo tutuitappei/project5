@@ -5,17 +5,25 @@
 #include <comon/Vector2.h>
 #include"BaseScene.h"
 
-using DrawQueT = std::tuple<int, double, double, double>;//
-
-#define lpSceneMag SceneMag::GetInstance()
+#define lpSceneMng SceneMag::GetInstance()
 
 enum class DRAW_QUE	//enum clase‚ª‚ ‚é‚±‚Æ‚Å“¯‚¶‚à‚Ì‚Å‚à•Ê‚ÌŒ^‚Æ‚µ‚Äˆµ‚¦‚é@ˆÀ‘S«‚ ‚è
 {
 	IMAGE,
 	X,
 	Y,
-	RAD
+	RAD,
+	ZORDER,  //Ú²Ô°“à‚Ì•`‰æ‡(”’l‚Ì’á‚¢‚Ù‚¤‚ª‰œ)
+	LAYER	//•`‰æ‡(‰œ‚©‚ç)
 };
+enum class LAYER
+{
+	BG,
+	CHAR,
+	UI
+};
+
+using DrawQueT = std::tuple<int, double, double, double, int, LAYER>;//
 
 class SceneMag
 {
