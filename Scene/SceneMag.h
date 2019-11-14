@@ -14,7 +14,7 @@ enum class DRAW_QUE	//enum claseがあることで同じものでも別の型として扱える　安全
 	Y,
 	RAD,
 	ZORDER,  //ﾚｲﾔｰ内の描画順(数値の低いほうが奥)
-	LAYER	//描画順(奥から)
+	LAYER	//優先度描画順(奥から)
 };
 enum class LAYER
 {
