@@ -67,6 +67,10 @@ private:
 
 	std::map<LAYER,int>_screenID;
 
+	
+
+
+
 	std::vector< DrawQueT> _drawList;
 
 	SceneMag();
