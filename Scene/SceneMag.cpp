@@ -5,16 +5,28 @@
 #include "SceneMag.h"
 #include"GameScene.h"
 #include"Title.h"
+#include<Obj.h>
 
 SceneMag* SceneMag::sInstance = nullptr;
 
+
+SceneMag::SceneMag() : ScreenSize{ 800,600 }//
+{
+}
+
 void SceneMag::Draw(void)
 {
-	std::sort<>(LAYER::BG, LAYER::UI);
+	std::sort(_drawList.begin(), _drawList.end(), [](DrawQueT dQueA, DrawQueT dQueB){
+		return 
+			std::tie(std::get<static_cast<int>(DRAW_QUE::LAYER)>(dQueA),std::get<static_cast<int>(DRAW_QUE::ZORDER)>(dQueA))
+			 < 
+			std::tie(std::get<static_cast<int>(DRAW_QUE::LAYER)>(dQueB), std::get<static_cast<int>(DRAW_QUE::ZORDER)>(dQueB));
+	});
 
 
 	SetDrawScreen(DX_SCREEN_BACK);
 	ClsDrawScreen();
+
 
 	//½À¯¸‚É‚½‚Ü‚Á‚Ä‚¢‚éQue‚ğ•`‰æ‚·‚é
 	//for (int i = 0; i < _drawList.size(); i++)
@@ -33,23 +45,39 @@ void SceneMag::Draw(void)
 	//		std::get<static_cast<int>(DRAW_QUE::IMAGE)>(date),
 	//		true);
 	//}
-	for (auto date = _drawList.begin(); date != _drawList.end(); date++)
+	//for (auto date = _drawList.begin(); date != _drawList.end(); date++)
+	//{
+
+	//	DrawRotaGraph(
+	//		std::get<static_cast<int>(DRAW_QUE::X)>(*date),
+	//		std::get<static_cast<int>(DRAW_QUE::Y)>(*date),
+	//		1.0,
+	//		std::get<static_cast<int>(DRAW_QUE::RAD)>(*date),
+	//		std::get<static_cast<int>(DRAW_QUE::IMAGE)>(*date),
+	//		true);
+	//}
+
+	//½À¯¸‚É‚½‚Ü‚Á‚Ä‚¢‚éQue‚ğ•`‰æ‚·‚é
+	for (auto dQue : _drawList)
 	{
+		double x, y, rad;
+		int id;
+		LAYER layer;
+
+		std::tie(id, x, y, rad, std::ignore, layer) = dQue;
+
 		DrawRotaGraph(
-			std::get<static_cast<int>(DRAW_QUE::X)>(*date),
-			std::get<static_cast<int>(DRAW_QUE::Y)>(*date),
+			static_cast<int>(x),
+			static_cast<int>(y),
 			1.0,
-			std::get<static_cast<int>(DRAW_QUE::RAD)>(*date),
-			std::get<static_cast<int>(DRAW_QUE::IMAGE)>(*date),
-			true);
+			rad,
+			id,
+			true
+		);
 	}
+
 	ScreenFlip();
 }
-
-SceneMag::SceneMag() : ScreenSize{ 800,600 }//
-{
-}
-
 
 SceneMag::~SceneMag()
 {
@@ -99,6 +127,9 @@ bool SceneMag::SysInit(void)
 		return false;
 	}
 	SetDrawScreen(DX_SCREEN_BACK);								//•`‰ææ‚ğÊŞ¯¸ÊŞ¯Ì§‚Éİ’è
+	//ScreenSize.x ScreenSize.Y _screenID
+
+	MakeScreen(ScreenSize.x,ScreenSize.y,);
 
 	/*srand((unsigned int)time(NULL));*/
 

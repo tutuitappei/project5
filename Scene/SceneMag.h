@@ -2,6 +2,7 @@
 #include<memory>
 #include<tuple>  //3‚ÂˆÈã‚Ìˆá‚¤Œ^‚Ì—v‘f‚ğæ‚èˆµ‚¤(2‚Â‚Ì‚Ípair)
 #include<vector>
+#include<map>
 #include <comon/Vector2.h>
 #include"BaseScene.h"
 
@@ -62,6 +63,9 @@ private:
 	unique_Base _activeScene;
 
 	void Draw(void);
+
+
+	std::map<LAYER,int>_screenID;
 
 	std::vector< DrawQueT> _drawList;
 
