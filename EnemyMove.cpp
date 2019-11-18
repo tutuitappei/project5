@@ -64,6 +64,7 @@ void EnemyMove::SetMovePrg(void)
 		break;
 	case MOVE_TYPE::LR:
 		_move = &EnemyMove::MoveLR;
+		LRCnt = 0;
 		break;
 	default:
 		AST();
@@ -139,4 +140,17 @@ void EnemyMove::Wait(void)
 
 void EnemyMove::MoveLR(void)
 {
+	if ((LRCnt/30)%2 == 0)
+	{
+		_pos.x++;
+	}
+	else if ((LRCnt / 30) % 2 == 1)
+	{
+		_pos.x--;
+	}
+	else
+	{
+		SetMovePrg();
+	}
+	LRCnt++;
 }
