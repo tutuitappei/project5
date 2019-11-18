@@ -21,8 +21,15 @@ enum class LAYER
 {
 	BG,
 	CHAR,
-	UI
+	UI,
+	MAX
 };
+
+
+LAYER begin(LAYER);
+LAYER end(LAYER);
+LAYER operator *(LAYER key);
+LAYER operator ++(LAYER& key);
 
 using DrawQueT = std::tuple<int, double, double, double, int, LAYER>;//
 

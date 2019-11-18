@@ -28,6 +28,12 @@ void SceneMag::Draw(void)
 	ClsDrawScreen();
 
 
+	for (auto screen : LAYER())
+	{
+		SetDrawScreen(_screenID[screen]);
+		ClsDrawScreen();
+	}
+
 	//Ω¿Ø∏Ç…ÇΩÇ‹Ç¡ÇƒÇ¢ÇÈQueÇï`âÊÇ∑ÇÈ
 	//for (int i = 0; i < _drawList.size(); i++)
 	//{
@@ -65,6 +71,11 @@ void SceneMag::Draw(void)
 		LAYER layer;
 
 		std::tie(id, x, y, rad, std::ignore, layer) = dQue;
+
+		if (_screenID[layer] != GetDrawScreen())
+		{
+			SetDrawScreen(_screenID[layer]);
+		}
 
 		DrawRotaGraph(
 			static_cast<int>(x),
@@ -129,16 +140,23 @@ bool SceneMag::SysInit(void)
 	SetDrawScreen(DX_SCREEN_BACK);								//ï`âÊêÊÇ ﬁØ∏ ﬁØÃßÇ…ê›íË
 	//ScreenSize.x ScreenSize.Y _screenID
 
-	MakeScreen(ScreenSize.x,ScreenSize.y,);
-
-	if ()
-	{
-
-	}
+	_screenID[LAYER::BG] =(MakeScreen(lpSceneMng.ScreenSize.x, lpSceneMng.ScreenSize.y, true));
+	_screenID[LAYER::UI] = (MakeScreen(lpSceneMng.ScreenSize.x, lpSceneMng.ScreenSize.y, true));
+	_screenID[LAYER::UI] = (MakeScreen(lpSceneMng.ScreenSize.x, lpSceneMng.ScreenSize.y, true));
 
 	/*srand((unsigned int)time(NULL));*/
 
 	ImageMng::GetInstance().GetID("òg","image/frame.png");
 
 	return false;
+}
+
+LAYER operator*(LAYER key)
+{
+	return key;
+}
+
+LAYER operator++(LAYER & key)
+{
+	return key = static_cast<LAYER>(std::underlying_type<LAYER>::type(key) + 1);
 }
