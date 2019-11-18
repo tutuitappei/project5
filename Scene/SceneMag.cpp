@@ -10,8 +10,7 @@
 SceneMag* SceneMag::sInstance = nullptr;
 
 
-SceneMag::SceneMag() : ScreenSize{ 800,600 },ScreenCenter{ScreenSize.x/2,ScreenSize.y/2},
-					   GameScreenSize{500,390},GameScreenOffset{(ScreenSize.x-GameScreenSize.x)/2,(ScreenSize.y-GameScreenSize.y)/2}//x‚Æy‚É•ª‚¯‚È‚­‚Ä‚¢‚¢
+SceneMag::SceneMag() : ScreenSize{ 800,600 },ScreenCenter{ScreenSize/2},GameScreenSize{500,390},GameScreenOffset{(ScreenSize-GameScreenSize)/2}
 {
 }
 

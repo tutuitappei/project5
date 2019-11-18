@@ -43,7 +43,7 @@ void Obj::Draw()
 		_animCnt = 0;
 	}
 
-	lpSceneMng.AddDrawQue({ _animMap[_state][_animFrame].first, _pos.x, _pos.y, _rad ,zOrder, LAYER::CHAR });
+	lpSceneMng.AddDrawQue({ _animMap[_state][_animFrame].first,  +_pos.x, _pos.y, _rad ,zOrder, LAYER::CHAR });
 }
 
 void Obj::Draw(int id)
