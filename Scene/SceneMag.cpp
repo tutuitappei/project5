@@ -10,7 +10,8 @@
 SceneMag* SceneMag::sInstance = nullptr;
 
 
-SceneMag::SceneMag() : ScreenSize{ 800,600 }//
+SceneMag::SceneMag() : ScreenSize{ 800,600 },ScreenCenter{ScreenSize.x/2,ScreenSize.y/2},
+					   GameScreenSize{500,390},GameScreenOffset{(ScreenSize.x-GameScreenSize.x)/2,(ScreenSize.y-GameScreenSize.y)/2}//x‚Æy‚É•ª‚¯‚È‚­‚Ä‚¢‚¢
 {
 }
 
@@ -85,6 +86,14 @@ void SceneMag::Draw(void)
 			id,
 			true
 		);
+	}
+
+	SetDrawScreen(DX_SCREEN_BACK);
+	ClsDrawScreen();
+
+	for (auto layer : LAYER())
+	{
+		DrawRotaGraph(ScreenCenter.x,ScreenCenter.y,1.0,0,_screenID[layer],true);
 	}
 
 	ScreenFlip();

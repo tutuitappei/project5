@@ -1,6 +1,6 @@
 #pragma once
 #include<memory>
-#include<tuple>  //3‚ÂˆÈã‚Ìˆá‚¤Œ^‚Ì—v‘f‚ğæ‚èˆµ‚¤(2‚Â‚Ì‚Ípair)
+#include<tuple> 
 #include<vector>
 #include<map>
 #include <comon/Vector2.h>
@@ -25,7 +25,7 @@ enum class LAYER
 	MAX
 };
 
-
+//•Ê‚Éì‚é
 LAYER begin(LAYER);
 LAYER end(LAYER);
 LAYER operator *(LAYER key);
@@ -64,6 +64,9 @@ public:
 	bool AddDrawQue(DrawQueT dQue);//
 
 	const Vector2in ScreenSize;
+	const Vector2in ScreenCenter;
+	const Vector2in GameScreenSize;
+	const Vector2in GameScreenOffset;
 private:
 	static SceneMag *sInstance;
 
