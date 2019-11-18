@@ -44,7 +44,8 @@ private:
 	
 	Vector2db _endPos;
 
-	double r;
+	double spr;
+	double spRad;
 
 	double _rad;
 
