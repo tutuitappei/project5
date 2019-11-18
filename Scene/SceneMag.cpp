@@ -9,6 +9,25 @@
 
 SceneMag* SceneMag::sInstance = nullptr;
 
+LAYER begin(LAYER)
+{
+	return LAYER::BG;
+}
+
+LAYER end(LAYER)
+{
+	return LAYER::MAX;
+}
+
+LAYER operator*(LAYER key)
+{
+	return key;
+}
+
+LAYER operator++(LAYER & key)
+{
+	return key = static_cast<LAYER>(std::underlying_type<LAYER>::type(key) + 1);
+}
 
 SceneMag::SceneMag() : ScreenSize{ 800,600 },ScreenCenter{ScreenSize/2},GameScreenSize{500,390},GameScreenOffset{(ScreenSize-GameScreenSize)/2}
 {
@@ -157,14 +176,4 @@ bool SceneMag::SysInit(void)
 	ImageMng::GetInstance().GetID("˜g","image/frame.png");
 
 	return false;
-}
-
-LAYER operator*(LAYER key)
-{
-	return key;
-}
-
-LAYER operator++(LAYER & key)
-{
-	return key = static_cast<LAYER>(std::underlying_type<LAYER>::type(key) + 1);
 }
