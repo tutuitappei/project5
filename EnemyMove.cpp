@@ -105,7 +105,7 @@ void EnemyMove::MoveSpiral(void)
 		{
 			(spRad++)+90.0;
 		}
-		spr--;
+		spr -= 0.5;
 		spCnt++;
 	}
 	
