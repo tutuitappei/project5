@@ -131,6 +131,11 @@ bool SceneMag::SysInit(void)
 
 	MakeScreen(ScreenSize.x,ScreenSize.y,);
 
+	if ()
+	{
+
+	}
+
 	/*srand((unsigned int)time(NULL));*/
 
 	ImageMng::GetInstance().GetID("˜g","image/frame.png");
