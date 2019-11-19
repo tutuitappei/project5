@@ -140,15 +140,11 @@ void EnemyMove::Wait(void)
 
 void EnemyMove::MoveLR(void)
 {
-	if ((LRCnt/30)%2 == 0)
+	if ()
 	{
-		_pos.x++;
+		_pos.x = LRCnt * ;
 	}
-	else if ((LRCnt / 30) % 2 == 1)
-	{
-		_pos.x--;
-	}
-	else
+	if()
 	{
 		SetMovePrg();
 	}
