@@ -6,7 +6,7 @@ enemy::enemy()
 	init();
 }
 
-enemy::enemy(EnemyState a)
+enemy::enemy(EnemyState& a)
 {
 	_type = std::get<static_cast<int> (ENEMY_STATE::TYPE)>(a);
 	_pos = std::move(std::get<static_cast<int> (ENEMY_STATE::VECTOR)>(a));

@@ -26,7 +26,7 @@ class enemy :
 {
 public:
 	enemy();
-	enemy(EnemyState a);
+	enemy(EnemyState& a);
 	void Update(void) override;
 	~enemy();
 

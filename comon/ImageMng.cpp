@@ -30,7 +30,6 @@ const VecInt & ImageMng::GetID(const std::string & key, const std::string fileNa
 	{
 		/*VecInt tmpDate;*/
 		imgMap[key].resize(divCnt.x * divCnt.y);
-		/*if (*/
 		LoadDivGraph(
 			fileName.c_str(),
 			divCnt.x*divCnt.y,
@@ -39,7 +38,16 @@ const VecInt & ImageMng::GetID(const std::string & key, const std::string fileNa
 			divSize.x,
 			divSize.y,
 			&imgMap[key][0]);
-		/* == 0)
+		/*if (
+		LoadDivGraph(
+			fileName.c_str(),
+			divCnt.x*divCnt.y,
+			divCnt.x,
+			divCnt.y,
+			divSize.x,
+			divSize.y,
+			&imgMap[key][0]);
+		 == 0)
 		{
 			imgMap[key] = std::move(tmpDate);
 		}

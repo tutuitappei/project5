@@ -7,7 +7,7 @@
 using VecInt = std::vector<int>;
 
 #define lpImageMng ImageMng::GetInstance()
-#define IMAGE_ID(KEY) (ImageMng::GetInstance().GetID)
+#define IMAGE_ID(KEY) (ImageMng::GetInstance().GetID(KEY))
 
 class ImageMng
 {
