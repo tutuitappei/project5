@@ -1,4 +1,5 @@
 #include<Dxlib.h>
+#include<time.h>
 #include<algorithm>
 #include<_DebugConOut.h>
 #include "GameScene.h"
@@ -9,6 +10,8 @@
 
 GameScene::GameScene()
 {
+	srand(unsigned int(time));
+
 	TRACE("ê∂ê¨\n");
 
 	lpImageMng.GetID("∑¨◊", "image/char.png", { 30,32 }, { 10,10 });
@@ -30,7 +33,12 @@ GameScene::GameScene()
 			tmpMoveState.emplace_back(MOVE_TYPE::SPIRAL, Vector2db{ 400.0 ,500.0 });//
 			tmpMoveState.emplace_back(MOVE_TYPE::PITIN, Vector2db{ 180.0,40.0 });//
 			tmpMoveState.emplace_back(MOVE_TYPE::LR, Vector2db{ 400.0,400.0 });//
-			EnemyState dete = {ENEMY_TYPE::A,{50*j,40*i}, {0,0}, tmpMoveState };
+			/*EnemyState dete = {ENEMY_TYPE::A,{50*j,40*i}, {0,0}, tmpMoveState };*/
+			EnemyState dete = {
+				(ENEMY_TYPE)(/*y%3*/0),
+			{ j*50.0 + 300.0,i*50.0 + 50.0 },
+			{ 0.0,0.0 },
+			tmpMoveState };
 			_objList.emplace_back(new enemy(dete));
 
 			
@@ -65,7 +73,7 @@ unique_Base GameScene::Update(unique_Base own)
 	{
 		if (CheckHitKey(KEY_INPUT_D))
 		{
-			(*date).SetAlive(false);
+			/*(*date).SetAlive(false);*/
 		}
 		(*date).Draw();
 	}

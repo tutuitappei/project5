@@ -69,7 +69,7 @@ void KeyState::SetKeyConfig(void)
 	}
 
 	auto checkKey = [&](int id) {
-		for (auto i = INPUT_ID::LEFT; i < _confID; i++)
+		for (auto i = INPUT_ID::LEFT; i < _confID; ++i)
 		{
 			if (_keyCon[static_cast<int>(i)] == id)
 			{

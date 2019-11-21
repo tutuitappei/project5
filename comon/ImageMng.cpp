@@ -26,7 +26,6 @@ const VecInt & ImageMng::GetID(const std::string & key, const std::string fileNa
 
 const VecInt & ImageMng::GetID(const std::string & key, const std::string fileName, const Vector2in divSize, const Vector2in divCnt)
 {
-	// TODO: return ステートメントをここに挿入します
 	if (imgMap.find(key) == imgMap.end())
 	{
 		/*VecInt tmpDate;*/
