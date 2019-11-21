@@ -150,6 +150,13 @@ bool SceneMag::AddDrawQue(DrawQueT dQue)
 	return true;
 }
 
+bool SceneMag::AddActQue(ActQueT aQue)
+{
+
+	_actList.emplace_back(aQue);
+	return true;
+}
+
 bool SceneMag::SysInit(void)
 {
 	bool rtnFlag = true;

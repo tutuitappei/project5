@@ -62,6 +62,7 @@ public:
 	void Run(void);
 
 	bool AddDrawQue(DrawQueT dQue);//
+	bool AddActQue(ActQueT aQue);
 
 	const Vector2in ScreenSize;
 	const Vector2in ScreenCenter;
@@ -78,9 +79,7 @@ private:
 	std::map<LAYER,int>_screenID;
 
 	
-
-
-
+	std::vector<ActQueT> _actList;
 	std::vector< DrawQueT> _drawList;
 
 	SceneMag();
