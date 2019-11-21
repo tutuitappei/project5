@@ -30,8 +30,6 @@ public:
 
 	bool state(const STATE state);
 	const STATE state(void) const;
-	const ;
-	const ;
 
 	bool SetAnim(const STATE state, AnimVector& data);
 	bool SetAlive(bool alive);
