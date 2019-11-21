@@ -78,15 +78,7 @@ const STATE Obj::state(void) const
 	return _state;
 }
 
-const Obj & _pos()
-{
-	
-}
 
-const Obj & _size()
-{
-	
-}
 
 bool Obj::SetAnim(const STATE state, AnimVector& data)
 {

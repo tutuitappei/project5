@@ -5,6 +5,7 @@
 #include<comon\ImageMng.h>
 #include<player.h>
 #include<enemy.h>
+#include<bullet.h>
 
 GameScene::GameScene()
 {
