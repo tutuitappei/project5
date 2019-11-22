@@ -7,6 +7,7 @@
 #include<player.h>
 #include<enemy.h>
 #include<bullet.h>
+#include<Scene\func\FuncBallet.h>
 
 GameScene::GameScene()
 {
@@ -84,5 +85,22 @@ unique_Base GameScene::Update(unique_Base own)
 	//_objList.erase(std::remove_if(_objList.begin(), _objList.end(), [](sharedOdj&obj) {return (*obj).isDead(); }), _objList.end());
 
 	return std::move(own);
+}
+
+void GameScene::RunActQue(std::vector<ActQueT> actList)
+{
+	for(auto actQue: actList)
+	{
+		switch (actQue.first)
+		{
+		case ACT_QUE::SHOT:
+			FuncBallet()(actQue, _objList);
+			break;
+		default:
+			AST();
+			break;
+		}
+
+	}
 }
 

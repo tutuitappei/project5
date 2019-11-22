@@ -14,6 +14,15 @@ enum class STATE
 	MAX
 };
 
+enum class UNIT_ID
+{
+	NON,
+	PLAYER,
+	ENEMY,
+	PL_BULLET,
+	EM_BULLET
+};
+
 class Obj;
 
 using AnimVector = std::vector<std::pair <int, unsigned int>>;

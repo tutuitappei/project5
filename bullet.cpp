@@ -6,7 +6,7 @@ bullet::bullet()
 {
 }
 
-bullet::bullet(Vector2db pos)
+bullet::bullet(UNIT_ID unitID, Vector2db pos)
 {
 }
 

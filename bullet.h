@@ -5,7 +5,7 @@ class bullet :
 {
 public:
 	bullet();
-	bullet(Vector2db pos);
+	bullet(UNIT_ID unitID, Vector2db pos);
 	void Update(void) override;
 	~bullet();
 private:

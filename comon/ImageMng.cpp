@@ -7,7 +7,6 @@ std::unique_ptr<ImageMng,ImageMng::ImageMngDeleter> ImageMng::Instance(new Image
 
 const VecInt & ImageMng::GetID(const std::string & key)
 {
-	// TODO: return ステートメントをここに挿入します
 	if (imgMap.find(key) == imgMap.end())
 
 	return GetID(key,key);
@@ -15,7 +14,6 @@ const VecInt & ImageMng::GetID(const std::string & key)
 
 const VecInt & ImageMng::GetID(const std::string & key, const std::string fileName)
 {
-	// TODO: return ステートメントをここに挿入します
 	if (imgMap.find(key) == imgMap.end())
 	{
 		imgMap[key].resize(1);
