@@ -4,7 +4,7 @@
 #include "BaseScene.h"
 #include"Obj.h"
 
-using funcAct = <()>;
+using funcAct = std::function<bool()>;
 
 class GameScene :
 	public BaseScene
