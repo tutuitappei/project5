@@ -73,9 +73,9 @@ unique_Base GameScene::Update(unique_Base own)
 
 	for(auto date : _objList)
 	{
-		if (CheckHitKey(KEY_INPUT_D))
+		if (CheckHitKey(KEY_INPUT_F2))
 		{
-			/*(*date).SetAlive(false);*/
+			(*date).SetAlive(false);
 		}
 		(*date).Draw();
 	}

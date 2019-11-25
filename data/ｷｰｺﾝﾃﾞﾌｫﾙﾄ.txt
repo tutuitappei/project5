@@ -1,0 +1,8 @@
+	_keyConDef.emplace_back(KEY_INPUT_LEFT);
+	_keyConDef.emplace_back(KEY_INPUT_RIGHT);
+	_keyConDef.emplace_back(KEY_INPUT_UP);
+	_keyConDef.emplace_back(KEY_INPUT_DOWN);
+	_keyConDef.emplace_back(KEY_INPUT_Z);
+	_keyConDef.emplace_back(KEY_INPUT_X);
+	_keyConDef.emplace_back(KEY_INPUT_A);
+	_keyConDef.emplace_back(KEY_INPUT_S);

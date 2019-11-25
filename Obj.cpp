@@ -1,6 +1,7 @@
 #include<DxLib.h>
 #include "Obj.h"
 #include<map>
+#include<_debug\_DebugConOut.h>
 #include"comon\ImageMng.h"
 #include"Scene\SceneMag.h"
 
@@ -98,6 +99,7 @@ bool Obj::SetAlive(bool alive)
 	if (!_alive)
 	{
 		state(STATE::DETH);
+		TRACE("\nÅ_(^o^)Å^\n");
 	}
 	return false;
 }

@@ -59,16 +59,16 @@ void player::init(void)
 	data.emplace_back(lpImageMng.GetID("·¬×")[1], 60);
 	SetAnim(STATE::NORMAL, data);
 
-	data.reserve(1);
-	data.emplace_back(lpImageMng.GetID("·¬×")[2], 60);
-	SetAnim(STATE::EX, data);
+	//data.reserve(1);
+	//data.emplace_back(lpImageMng.GetID("·¬×")[2], 60);
+	//SetAnim(STATE::EX, data);
 
-	//data.emplace_back(IMAGE_ID("Ž©”š")[0], 20);
-	//data.emplace_back(IMAGE_ID("Ž©”š")[1], 25);
-	//data.emplace_back(IMAGE_ID("Ž©”š")[2], 30);
-	//data.emplace_back(IMAGE_ID("Ž©”š")[3], 35);
-	//data.emplace_back(-1, 40);
-	//SetAnim(STATE::DETH, data);
+	data.emplace_back(IMAGE_ID("PL”š”­")[0], 20);
+	data.emplace_back(IMAGE_ID("PL”š”­")[1], 25);
+	data.emplace_back(IMAGE_ID("PL”š”­")[2], 30);
+	data.emplace_back(IMAGE_ID("PL”š”­")[3], 35);
+	data.emplace_back(-1, 40);
+	SetAnim(STATE::DETH, data);
 
 	_input = std::make_shared<KeyState>();
 	//_input.reset(new KeyState());
