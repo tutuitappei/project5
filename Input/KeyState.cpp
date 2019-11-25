@@ -56,6 +56,7 @@ void KeyState::RefKeyData(void)
 	{
 		_confID = INPUT_ID::LEFT;
 		TRACE("SetKeyConfig\n")
+		TRACE("1/8")
 		func = &KeyState::SetKeyConfig;
 	}
 }
@@ -102,6 +103,11 @@ void KeyState::SetKeyConfig(void)
 				}
 				TRACE("RefKeyData\n")
 				func = &KeyState::RefKeyData;
+			}
+			else
+			{
+				TRACE("ïœçX\n");
+				TRACE("%d/%d", static_cast<int>(_confID) + 1, end(INPUT_ID()));
 			}
 		}
 	}
