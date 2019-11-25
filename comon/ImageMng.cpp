@@ -7,8 +7,6 @@ std::unique_ptr<ImageMng,ImageMng::ImageMngDeleter> ImageMng::Instance(new Image
 
 const VecInt & ImageMng::GetID(const std::string & key)
 {
-	if (imgMap.find(key) == imgMap.end())
-
 	return GetID(key,key);
 }
 

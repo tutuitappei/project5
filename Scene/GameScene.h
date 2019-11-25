@@ -11,8 +11,8 @@ class GameScene :
 {
 public:
 	GameScene();
-	~GameScene();
 	unique_Base Update(unique_Base own)override;
+	~GameScene();
 private:
 	std::vector<sharedOdj> _objList ;
 

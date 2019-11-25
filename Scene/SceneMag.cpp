@@ -35,11 +35,11 @@ SceneMag::SceneMag() : ScreenSize{ 800,600 },ScreenCenter{ScreenSize/2},GameScre
 
 void SceneMag::Draw(void)
 {
-	std::sort(_drawList.begin(), _drawList.end(), [](DrawQueT dQueA, DrawQueT dQueB){
-		return 
-			std::tie(std::get<static_cast<int>(DRAW_QUE::LAYER)>(dQueA),std::get<static_cast<int>(DRAW_QUE::ZORDER)>(dQueA))
-			 < 
-			std::tie(std::get<static_cast<int>(DRAW_QUE::LAYER)>(dQueB), std::get<static_cast<int>(DRAW_QUE::ZORDER)>(dQueB));
+	std::sort(_drawList.begin(), _drawList.end(), [](DrawQueT dQueA, DrawQueT dQueB){ 
+
+		return	std::tie(std::get<static_cast<int>(DRAW_QUE::LAYER)>(dQueA),std::get<static_cast<int>(DRAW_QUE::ZORDER)>(dQueA))
+				< 
+				std::tie(std::get<static_cast<int>(DRAW_QUE::LAYER)>(dQueB), std::get<static_cast<int>(DRAW_QUE::ZORDER)>(dQueB));
 	});
 
 
@@ -115,6 +115,7 @@ void SceneMag::Draw(void)
 	}
 
 	ScreenFlip();
+
 }
 
 SceneMag::~SceneMag()

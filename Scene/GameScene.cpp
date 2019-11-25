@@ -2,8 +2,8 @@
 #include<time.h>
 #include<algorithm>
 #include<_DebugConOut.h>
-#include "GameScene.h"
 #include<comon\ImageMng.h>
+#include "GameScene.h"
 #include<player.h>
 #include<enemy.h>
 #include<bullet.h>
