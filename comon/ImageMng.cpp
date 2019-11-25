@@ -1,6 +1,6 @@
 #include "ImageMng.h"
 #include<map>
-#include<Dxlib.h>
+#include<DxLib.h>
 
 std::unique_ptr<ImageMng,ImageMng::ImageMngDeleter> ImageMng::Instance(new ImageMng());
 //ImageMng* ImageMng::Instance = nullptr;

@@ -2,6 +2,6 @@
 #include<Scene\BaseScene.h>
 struct FuncBallet
 {
-	bool operator() (ActQueT actQue, );
+	/*bool operator() (ActQueT actQue, );*/
 };
 

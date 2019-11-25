@@ -64,7 +64,7 @@ void EnemyMove::SetMovePrg(void)
 		break;
 	case MOVE_TYPE::LR:
 		_move = &EnemyMove::MoveLR;
-		LRCnt = 0;
+		/*LRCnt = 0;*/
 		break;
 	default:
 		AST();
@@ -92,61 +92,61 @@ void EnemyMove::MoveSigmoid(void)
 
 void EnemyMove::MoveSpiral(void)
 {
-	if (spCnt >= 60*3)
-	{
-		SetMovePrg();
-	}
-	else
-	{
-		if (_startPos.y < _endPos.y)
-		{
-			(spRad--)+90.0;
-		}
-		if (_startPos.y > _endPos.y)
-		{
-			(spRad++)+90.0;
-		}
-		spr -= 0.5;
-		spCnt++;
-	}
+	//if (spCnt >= 60*3)
+	//{
+	//	SetMovePrg();
+	//}
+	//else
+	//{
+	//	if (_startPos.y < _endPos.y)
+	//	{
+	//		(spRad--)+90.0;
+	//	}
+	//	if (_startPos.y > _endPos.y)
+	//	{
+	//		(spRad++)+90.0;
+	//	}
+	//	spr -= 0.5;
+	//	spCnt++;
+	//}
 	
 }
 
 void EnemyMove::PitIn(void)
 {
-	Vector2db _length;
-	if (abs((_endPos-_startPos)/120.0) > abs(_endPos - _pos))//abs((_endPos-_startPos)/120.0)‚ðŠÖ”‰»
-	{
-		_pos = _endPos;
-		_rad = 0.0;
-		SetMovePrg();
-	}
-	else
-	{
-		_pos += (_endPos - _startPos) / 120.0;
-		_length = _endPos - _pos;
-		_rad = std::atan2(_length.y, _length.x) + (90 * 3.141592) / 180;
-	}
+	//Vector2db _length;
+	//if (abs((_endPos-_startPos)/120.0) > abs(_endPos - _pos))//abs((_endPos-_startPos)/120.0)‚ðŠÖ”‰»
+	//{
+	//	_pos = _endPos;
+	//	_rad = 0.0;
+	//	SetMovePrg();
+	//}
+	//else
+	//{
+	//	_pos += (_endPos - _startPos) / 120.0;
+	//	_length = _endPos - _pos;
+	//	_rad = std::atan2(_length.y, _length.x) + (90 * 3.141592) / 180;
+	//}
 }
 
 void EnemyMove::Wait(void)
 {
-	cnt++;
-	if (cnt >= _aim[_aimCnt].second.x)
-	{
-		SetMovePrg();
-	}
+	//cnt++;
+	//if (cnt >= _aim[_aimCnt].second.x)
+	//{
+	//	SetMovePrg();
+	//}
 }
 
 void EnemyMove::MoveLR(void)
 {
-	if ()
-	{
-		_pos.x = LRCnt * ;
-	}
-	if()
-	{
-		SetMovePrg();
-	}
-	LRCnt++;
+	//if ()
+	//{
+	//	_pos.x = LRCnt * ;
+	//}
+	//if()
+	//{
+	//	SetMovePrg();
+	//}
+	//LRCnt++;
 }

@@ -33,7 +33,7 @@ private:
 
 	int cnt;
 	int spCnt;
-	static int LRCnt;
+	/*static int LRCnt;*/
 
 
 	MoveState _aim;

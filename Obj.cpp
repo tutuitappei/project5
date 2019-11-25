@@ -1,4 +1,4 @@
-#include<Dxlib.h>
+#include<DxLib.h>
 #include "Obj.h"
 #include<map>
 #include"comon\ImageMng.h"

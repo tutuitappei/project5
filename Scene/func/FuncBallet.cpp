@@ -1,8 +1,8 @@
 #include "FuncBallet.h"
 #include<bullet.h>
 
-bool FuncBallet::operator()(ActQueT actQue,)
-{
-	
-	return false;
-}
+//bool FuncBallet::operator()(ActQueT actQue,)
+//{
+//	
+//	return false;
+//}

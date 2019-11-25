@@ -1,4 +1,4 @@
-#include<Dxlib.h>
+#include<DxLib.h>
 #include<time.h>
 #include<algorithm>
 #include<_DebugConOut.h>
@@ -94,7 +94,7 @@ void GameScene::RunActQue(std::vector<ActQueT> actList)
 		switch (actQue.first)
 		{
 		case ACT_QUE::SHOT:
-			FuncBallet()(actQue, _objList);
+			/*FuncBallet()(actQue, _objList);*/
 			break;
 		default:
 			AST();
