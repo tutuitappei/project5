@@ -16,7 +16,7 @@ KeyState::KeyState()
 	_keyConDef.emplace_back(KEY_INPUT_S);
 
 	FILE* fp;
-	if (fopen_s(&fp, "data/key.dat", "rb") == NULL)
+	if (fopen_s(&fp, "data/key.dat", "rb") != NULL)
 	{
 		_keyCon = _keyConDef;
 	}

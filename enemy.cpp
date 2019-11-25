@@ -42,13 +42,13 @@ void enemy::init(void)
 	//data.emplace_back(IMAGE_ID("·¬×")[1 + 10 + (2 * static_cast<int>(_Type))], 60);
 	//SetAnim(STATE::NORMAL, data);
 
-	data.emplace_back(IMAGE_ID("“G”š")[0], 10);
-	data.emplace_back(IMAGE_ID("“G”š")[1], 15);
-	data.emplace_back(IMAGE_ID("“G”š")[2], 20);
-	data.emplace_back(IMAGE_ID("“G”š")[3], 25);
-	data.emplace_back(IMAGE_ID("“G”š")[4], 35);
-	data.emplace_back(-1, 40);
-	SetAnim(STATE::DETH, data);
+	//data.emplace_back(IMAGE_ID("“G”š")[0], 10);
+	//data.emplace_back(IMAGE_ID("“G”š")[1], 15);
+	//data.emplace_back(IMAGE_ID("“G”š")[2], 20);
+	//data.emplace_back(IMAGE_ID("“G”š")[3], 25);
+	//data.emplace_back(IMAGE_ID("“G”š")[4], 35);
+	//data.emplace_back(-1, 40);
+	//SetAnim(STATE::DETH, data);
 
 	state(STATE::NORMAL);
 }
