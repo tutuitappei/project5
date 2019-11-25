@@ -3,6 +3,7 @@
 #include<algorithm>
 #include<_DebugConOut.h>
 #include<comon\ImageMng.h>
+#include"SceneMag.h"
 #include "GameScene.h"
 #include<player.h>
 #include<enemy.h>
@@ -21,7 +22,7 @@ GameScene::GameScene()
 	lpImageMng.GetID("PL”š”­", "image/pl_blast.png", { 64,64 }, { 4,1 });
 	
 	_objList.emplace_back(
-			new player({ 400.0,578.0 }, { 0.0,0.0 })
+			new player({ lpSceneMng.GameScreenSize.x / 2.0 - 16.0,lpSceneMng.GameScreenSize.y - 16.0 }, { 0.0,0.0 })
 		);
 	
 	for (int i = 0; i < 5; i++)
@@ -37,7 +38,7 @@ GameScene::GameScene()
 			/*EnemyState dete = {ENEMY_TYPE::A,{50*j,40*i}, {0,0}, tmpMoveState };*/
 			EnemyState dete = {
 				(ENEMY_TYPE)(/*y%3*/0),
-			{ j*50.0 + 300.0,i*50.0 + 50.0 },
+			{ (j*30.0)+15.0,(i*30.0)+16.0 },
 			{ 0.0,0.0 },
 			tmpMoveState };
 			_objList.emplace_back(new enemy(dete));
