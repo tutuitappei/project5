@@ -1,4 +1,5 @@
 #include "EnemyMove.h"
+#include<Scene\SceneMag.h>
 #include"_debug\_DebugConOut.h"
 
 EnemyMove::EnemyMove(Vector2db& pos):_pos(pos)//
@@ -92,17 +93,53 @@ void EnemyMove::MoveSigmoid(void)
 
 void EnemyMove::MoveSpiral(void)
 {
-	if (spCnt >= 60*3)
+	Vector2Template<double> checkPos = (_endPos - _pos);
+
+	if (_startPos.x > lpSceneMng.GameScreenSize.x / 2)
 	{
-		SetMovePrg();
+		//ç∂â∫
+		if (_startPos.y > lpSceneMng.GameScreenSize.y * 2 / 3)
+		{
+			spRad += 2 * 3.141592 / 180;
+		}
+		//ç∂è„
+		else
+		{
+			spRad -= 2 * 3.141592 / 180;
+		}
 	}
 	else
 	{
-
-		spr -= 0.5;
-		spCnt++;
+		//âEâ∫
+		if (_startPos.y > lpSceneMng.GameScreenSize.y * 2 / 3)
+		{
+			spRad -= 2 * 3.141592 / 180;
+		}
+		//âEè„
+		else
+		{
+			spRad += 2 * 3.141592 / 180;
+		}
 	}
-	
+
+
+
+
+	_pos.x = _endPos.x + spr * sin(spRad);
+	_pos.y = _endPos.y + spr * cos(spRad);
+
+	//îºåaÇè¨Ç≥Ç≠Ç∑ÇÈ
+	spr -= 0.4;
+
+	//_rad = atan2(checkPos.y, checkPos.x) + 90.0*3.141592 / 180.0;
+	checkPos.y = abs(checkPos.y);
+	checkPos.x = abs(checkPos.x);
+	if (checkPos.y < 0.1 && checkPos.x < 0.1)
+	{
+		_pos = _endPos;
+		_rad = 0;
+		SetMovePrg();
+	}
 }
 
 void EnemyMove::PitIn(void)
