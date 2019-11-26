@@ -59,7 +59,7 @@ void EnemyMove::SetMovePrg(void)
 		spRad = 0.0;
 		spCnt = 0;
 		break;
-	case MOVE_TYPE::PITIN:
+	case MOVE_TYPE::PITIN1:
 		_move = &EnemyMove::PitIn;
 		break;
 	case MOVE_TYPE::LR:
@@ -149,4 +149,13 @@ void EnemyMove::MoveLR(void)
 	//	SetMovePrg();
 	//}
 	//LRCnt++;
+}
+
+void EnemyMove::MoveExpand(void)
+{
+}
+
+void EnemyMove::MoveAttack(void)
+{
+
 }

@@ -7,8 +7,11 @@ enum class MOVE_TYPE
 	WAIT,
 	SIGMOID,
 	SPIRAL,
-	PITIN,
-	LR
+	PITIN1,
+	LR,
+	EXPAND,
+	ATTACK,
+	PITIN2
 };
 
 using MoveState = std::vector<std::pair<MOVE_TYPE, Vector2db>>;
@@ -30,6 +33,8 @@ private:
 	void PitIn(void);
 	void Wait(void);
 	void MoveLR(void);
+	void MoveExpand(void);
+	void MoveAttack(void);
 
 	int cnt;
 	int spCnt;

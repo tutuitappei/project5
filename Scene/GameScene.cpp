@@ -33,8 +33,11 @@ GameScene::GameScene()
 			tmpMoveState.emplace_back(MOVE_TYPE::WAIT, Vector2db{ (30.0*j),0.0 });//
 			tmpMoveState.emplace_back(MOVE_TYPE::SIGMOID, Vector2db{500.0 ,500.0});//
 			tmpMoveState.emplace_back(MOVE_TYPE::SPIRAL, Vector2db{ 400.0 ,500.0 });//
-			tmpMoveState.emplace_back(MOVE_TYPE::PITIN, Vector2db{ 180.0,40.0 });//
+			tmpMoveState.emplace_back(MOVE_TYPE::PITIN1, Vector2db{ 180.0,40.0 });//
 			tmpMoveState.emplace_back(MOVE_TYPE::LR, Vector2db{ 400.0,400.0 });//
+			tmpMoveState.emplace_back(MOVE_TYPE::EXPAND, Vector2db{});
+			tmpMoveState.emplace_back(MOVE_TYPE::ATTACK, Vector2db{});
+			tmpMoveState.emplace_back(MOVE_TYPE::PITIN2, Vector2db{});
 			/*EnemyState dete = {ENEMY_TYPE::A,{50*j,40*i}, {0,0}, tmpMoveState };*/
 			EnemyState dete = {
 				(ENEMY_TYPE)(/*y%3*/0),
@@ -64,11 +67,13 @@ unique_Base GameScene::Update(unique_Base own)
 	/*{
 		obj[j]->Draw();
 	}*/
+	
+	auto plObj = std::find_if(_objList.begin(),_objList.end(),[&]() {return  == UNIT_ID::PLAYER ; });
 
 	for (auto date : _objList)
 	{
 
-		(*date).Update();
+		(*date).Update(*plObj);
 	}
 
 	for(auto date : _objList)

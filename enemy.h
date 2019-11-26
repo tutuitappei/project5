@@ -27,7 +27,7 @@ class enemy :
 public:
 	enemy();
 	enemy(EnemyState& a);
-	void Update(void) override;
+	void Update(sharedOdj plObj) override;
 	~enemy();
 
 private:

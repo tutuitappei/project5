@@ -10,7 +10,7 @@ bullet::bullet(UNIT_ID unitID, Vector2db pos)
 {
 }
 
-void bullet::Update(void)
+void bullet::Update(sharedOdj plObj)
 {
 }
 

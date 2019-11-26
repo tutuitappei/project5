@@ -15,7 +15,7 @@ player::player(Vector2db pos, Vector2db size)//
 	init();
 }
 
-void player::Update(void)
+void player::Update(sharedOdj plObj)
 {
 	if (DestroyPrpc())
 	{

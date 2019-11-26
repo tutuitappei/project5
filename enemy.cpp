@@ -17,7 +17,7 @@ enemy::enemy(EnemyState& a)
 	init();
 }
 
-void enemy::Update(void)
+void enemy::Update(sharedOdj plObj)
 {
 	if (DestroyPrpc())
 	{
