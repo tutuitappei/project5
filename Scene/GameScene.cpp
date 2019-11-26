@@ -39,11 +39,14 @@ GameScene::GameScene()
 			tmpMoveState.emplace_back(MOVE_TYPE::ATTACK, Vector2db{});
 			tmpMoveState.emplace_back(MOVE_TYPE::PITIN2, Vector2db{});
 			/*EnemyState dete = {ENEMY_TYPE::A,{50*j,40*i}, {0,0}, tmpMoveState };*/
-			EnemyState dete = {
-				(ENEMY_TYPE)(/*y%3*/0),
-			{ (j*30.0)+15.0,(i*30.0)+16.0 },
-			{ 0.0,0.0 },
-			tmpMoveState };
+			EnemyState dete = { static_cast<ENEMY_TYPE>((j + i * 10) % 3) ,{ static_cast<double>(((j + i * 10) % 2)*(lpSceneMng.GameScreenSize.x + 32) - 16),
+				static_cast<double>((((j + i * 10) / 2) % 3)*(lpSceneMng.GameScreenSize.y / 2 - 30) + 15) },
+			{ 0,0 },tmpMoveState };
+			//{
+			//	(ENEMY_TYPE)(/*y%3*/0),
+			//{ (j*30.0)+15.0,(i*30.0)+16.0 },
+			//{ 0.0,0.0 },
+			//tmpMoveState };
 			_objList.emplace_back(new enemy(dete));
 
 			
@@ -68,12 +71,12 @@ unique_Base GameScene::Update(unique_Base own)
 		obj[j]->Draw();
 	}*/
 	
-	auto plObj = std::find_if(_objList.begin(),_objList.end(),[&]() {return  == UNIT_ID::PLAYER ; });
+	/*auto plObj = std::find_if(_objList.begin(),_objList.end(),[&]() {return  == UNIT_ID::PLAYER ; });*/
 
 	for (auto date : _objList)
 	{
 
-		(*date).Update(*plObj);
+		(*date).Update(/**plObj*/);
 	}
 
 	for(auto date : _objList)

@@ -8,7 +8,7 @@ class player :
 public:
 	player();
 	player(Vector2db pos, Vector2db size);//
-	void Update(sharedOdj plObj) override;
+	void Update(/*sharedOdj plObj*/) override;
 	~player();
 
 private:

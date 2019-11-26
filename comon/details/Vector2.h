@@ -219,6 +219,7 @@
 
 
 #include<Vector2.h>
+#include<math.h>
 
 
 template<class T>
@@ -467,6 +468,6 @@ Vector2Template<T> operator % (const Vector2Template<T>& u, int a)
 template<class T>
 inline Vector2Template<T> abs(const Vector2Template<T>& u)
 {
-	return (abs(u.x),abs(u.y));
+	return {(abs(u.x), abs(u.y))};
 }
 
