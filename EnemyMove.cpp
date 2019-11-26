@@ -53,6 +53,7 @@ void EnemyMove::SetMovePrg(void)
 		break;
 	case MOVE_TYPE::SIGMOID:
 		_move = &EnemyMove::MoveSigmoid;
+		sigCnt = 0;
 		break;
 	case MOVE_TYPE::SPIRAL:
 		_move = &EnemyMove::MoveSpiral;
@@ -77,17 +78,30 @@ void EnemyMove::SetMovePrg(void)
 void EnemyMove::MoveSigmoid(void)
 {
 	Vector2db _moveCnt = _startPos;
-	
-	if (_pos.x >= _endPos.x)
+	Vector2Template<double> checkPos = (_endPos - _pos);
+	//ç∂
+	if (_startPos.x < 0)
 	{
-		_pos = _endPos;
-		SetMovePrg();
+		_pos.x++;
 	}
+	//âE
 	else
 	{
-		_pos.x = _moveCnt.x;
-		_pos.y = (1.0/(1.0+exp(-_endPos.x)));
-		_moveCnt.x++;
+		_pos.x--;
+
+	}
+
+	_pos.y = ((1 / (1 + exp(-sigCnt)))*(_endPos.y - _startPos.y) + _startPos.y);
+	sigCnt += 0.05;
+	//TRACE("Y,%f\n", _pos.y);
+	//TRACE("X,%f\n", _pos.x);
+	checkPos.y = abs(checkPos.y);
+	checkPos.x = abs(checkPos.x);
+	if (checkPos.y < 1 && checkPos.x < 1)
+	{
+		_pos = _endPos;
+		_rad = 0;
+		SetMovePrg();
 	}
 }
 
@@ -161,11 +175,11 @@ void EnemyMove::PitIn(void)
 
 void EnemyMove::Wait(void)
 {
-	cnt++;
-	if (cnt >= _aim[_aimCnt].second.x)
+	if (cnt >= _endPos.x)
 	{
 		SetMovePrg();
 	}
+	cnt++;
 }
 
 void EnemyMove::MoveLR(void)

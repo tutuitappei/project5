@@ -38,6 +38,7 @@ private:
 
 	int cnt;
 	int spCnt;
+	int sigCnt;
 	/*static int LRCnt;*/
 
 
