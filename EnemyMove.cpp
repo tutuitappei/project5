@@ -38,7 +38,7 @@ bool EnemyMove::SetMoveState(MoveState & state, bool newFlag)
 void EnemyMove::SetMovePrg(void)
 {
 	_aimCnt++;
-	if (_aimCnt >= _aim.size())
+	if (_aimCnt >= static_cast<signed>(_aim.size()))
 	{
 		return;
 	}
@@ -98,14 +98,7 @@ void EnemyMove::MoveSpiral(void)
 	}
 	else
 	{
-		if (_startPos.y < _endPos.y)
-		{
-			(spRad--)+90.0;
-		}
-		if (_startPos.y > _endPos.y)
-		{
-			(spRad++)+90.0;
-		}
+
 		spr -= 0.5;
 		spCnt++;
 	}
