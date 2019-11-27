@@ -30,7 +30,7 @@ GameScene::GameScene()
 		for (int j = 0; j < 10; j++)
 		{
 			MoveState tmpMoveState;
-			tmpMoveState.emplace_back(MOVE_TYPE::WAIT, Vector2db{ 30.0+((j * 10) + (i * 10)), 0.0 });//
+			tmpMoveState.emplace_back(MOVE_TYPE::WAIT, Vector2db{ 30.0+((j * 50) + (i * 50)), 0.0 });//
 						//ã”¼•ª
 			//if ((((j + i * 10) / 2) % 3) != 2)
 			//{
