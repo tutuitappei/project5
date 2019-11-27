@@ -55,16 +55,16 @@ void EnemyMove::SetMovePrg(void)
 		_move = &EnemyMove::Wait;
 		cnt = 0;
 		break;
-	case MOVE_TYPE::SIGMOID:
-		_move = &EnemyMove::MoveSigmoid;
-		sigCnt = 0;
-		break;
-	case MOVE_TYPE::SPIRAL:
-		_move = &EnemyMove::MoveSpiral;
-		spr = 100;
-		spRad = 0.0;
-		spCnt = 0;
-		break;
+	//case MOVE_TYPE::SIGMOID:
+	//	_move = &EnemyMove::MoveSigmoid;
+	//	sigCnt = 0;
+	//	break;
+	//case MOVE_TYPE::SPIRAL:
+	//	_move = &EnemyMove::MoveSpiral;
+	//	spr = 100;
+	//	spRad = 0.0;
+	//	spCnt = 0;
+	//	break;
 	case MOVE_TYPE::PITIN1:
 		_move = &EnemyMove::PitIn;
 		break;
@@ -204,11 +204,11 @@ void EnemyMove::Wait(void)
 
 void EnemyMove::MoveLR(void)
 {
-	_pos.x = _pos.x + 1 * (((LRCnt / 100) % 2) * 2 - 1.0);
-	Vector2Template<double> checkPos = (_endPos - _pos);
-	checkPos.y = abs(checkPos.y);
-	checkPos.x = abs(checkPos.x);
-
+	//_pos.x = _pos.x + 1 * (((LRCnt / 100) % 2) * 2 - 1.0);
+	//Vector2Template<double> checkPos = (_endPos - _pos);
+	//checkPos.y = abs(checkPos.y);
+	//checkPos.x = abs(checkPos.x);
+	/*SetMovePrg();*/
 }
 
 void EnemyMove::MoveExpand(void)
