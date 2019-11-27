@@ -1,11 +1,13 @@
 #include "EnemyMove.h"
 #include<Scene\SceneMag.h>
 #include"_debug\_DebugConOut.h"
+#include"Obj.h"
 
 EnemyMove::EnemyMove(Vector2db& pos):_pos(pos)//
 {
 	_move = nullptr;
 	_aimCnt = -1;
+	LRCnt = 0;
 }
 
 
@@ -19,6 +21,8 @@ void EnemyMove::UpData(void)
 	{
 		(this->*_move)();
 	}
+
+	LRCnt++;
 	//_pos.x++;//
 }
 
@@ -57,7 +61,7 @@ void EnemyMove::SetMovePrg(void)
 		break;
 	case MOVE_TYPE::SPIRAL:
 		_move = &EnemyMove::MoveSpiral;
-		spr = abs(_endPos.x - _startPos.x);
+		spr = 100;
 		spRad = 0.0;
 		spCnt = 0;
 		break;
@@ -66,7 +70,12 @@ void EnemyMove::SetMovePrg(void)
 		break;
 	case MOVE_TYPE::LR:
 		_move = &EnemyMove::MoveLR;
-		/*LRCnt = 0;*/
+		break;
+	case MOVE_TYPE::EXPAND:
+		break;
+	case MOVE_TYPE::ATTACK:
+		break;
+	case MOVE_TYPE::PITIN2:
 		break;
 	default:
 		AST();
@@ -93,8 +102,8 @@ void EnemyMove::MoveSigmoid(void)
 
 	_pos.y = ((1 / (1 + exp(-sigCnt)))*(_endPos.y - _startPos.y) + _startPos.y);
 	sigCnt += 0.05;
-	//TRACE("Y,%f\n", _pos.y);
-	//TRACE("X,%f\n", _pos.x);
+	TRACE("Y,%f\n", _pos.y);
+	TRACE("X,%f\n", _pos.x);
 	checkPos.y = abs(checkPos.y);
 	checkPos.x = abs(checkPos.x);
 	if (checkPos.y < 1 && checkPos.x < 1)
@@ -154,6 +163,8 @@ void EnemyMove::MoveSpiral(void)
 		_rad = 0;
 		SetMovePrg();
 	}
+	TRACE("Y,%f\n", _pos.y);
+	TRACE("X,%f\n", _pos.x);
 }
 
 void EnemyMove::PitIn(void)
@@ -171,6 +182,15 @@ void EnemyMove::PitIn(void)
 		_length = _endPos - _pos;
 		_rad = std::atan2(_length.y, _length.x) + (90 * 3.141592) / 180;
 	}
+	TRACE("Y,%f\n", _pos.y);
+	TRACE("X,%f\n", _pos.x);
+	//if (_pos.y <= (lpSceneMng.GameScreenSize.y + 100.0))
+	//{
+	//	_pos.y = (lpSceneMng.GameScreenOffset.y - 100);
+	//	_length = _endPos - _pos;
+	//	_rad = std::atan2(_length.y, _length.x) + (90 * 3.141592) / 180;
+	//}
+
 }
 
 void EnemyMove::Wait(void)
@@ -184,15 +204,11 @@ void EnemyMove::Wait(void)
 
 void EnemyMove::MoveLR(void)
 {
-	//if ()
-	//{
-	//	_pos.x = LRCnt * ;
-	//}
-	//if()
-	//{
-	//	SetMovePrg();
-	//}
-	//LRCnt++;
+	_pos.x = _pos.x + 1 * (((LRCnt / 100) % 2) * 2 - 1.0);
+	Vector2Template<double> checkPos = (_endPos - _pos);
+	checkPos.y = abs(checkPos.y);
+	checkPos.x = abs(checkPos.x);
+
 }
 
 void EnemyMove::MoveExpand(void)

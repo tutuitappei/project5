@@ -22,6 +22,7 @@ enum class LAYER
 	BG,
 	UI,
 	CHAR,
+	/*UI,*/
 	MAX
 };
 

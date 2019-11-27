@@ -31,10 +31,20 @@ GameScene::GameScene()
 		{
 			MoveState tmpMoveState;
 			tmpMoveState.emplace_back(MOVE_TYPE::WAIT, Vector2db{ 30.0+((j * 10) + (i * 10)), 0.0 });//
-			//tmpMoveState.emplace_back(MOVE_TYPE::SIGMOID, Vector2db{500.0 ,500.0});//
+						//上半分
+			if ((((j + i * 10) / 2) % 3) != 2)
+			{
+				tmpMoveState.emplace_back(MOVE_TYPE::SIGMOID, Vector2Template<double>{ (j % 2)*-200.0 + lpSceneMng.GameScreenSize.x / 2 + lpSceneMng.GameScreenOffset.x - 48, lpSceneMng.GameScreenSize.y *(4.0 / 7.0) + lpSceneMng.GameScreenOffset.y});
+			}
+			//下半分、終了地点を上にずらす
+			else
+			{
+				tmpMoveState.emplace_back(MOVE_TYPE::SIGMOID, Vector2Template<double>{ (j % 2)*-200.0 + lpSceneMng.GameScreenSize.x / 2 + lpSceneMng.GameScreenOffset.x - 48, lpSceneMng.GameScreenSize.y*(4.0 / 7.0) - (32 * 4) + lpSceneMng.GameScreenOffset.y});
+			}
 			tmpMoveState.emplace_back(MOVE_TYPE::SPIRAL, Vector2Template<double>{ (j % 2)*-200.0 + lpSceneMng.GameScreenSize.x / 2 + lpSceneMng.GameScreenOffset.x - 48, lpSceneMng.GameScreenSize.y*(6.0 / 7.0) - 32 * 2 - 8});
 			tmpMoveState.emplace_back(MOVE_TYPE::PITIN1, Vector2db{ static_cast<double>(j * 30 + lpSceneMng.GameScreenOffset.x / 2), static_cast<double>(i * 35 + 16 + 35) });//
-			tmpMoveState.emplace_back(MOVE_TYPE::LR, Vector2db{ 400.0,400.0 });//
+			//tmpMoveState.emplace_back(MOVE_TYPE::LR, Vector2db{ 400.0,400.0 });//
+			tmpMoveState.emplace_back(MOVE_TYPE::LR, Vector2Template<double>{ static_cast<double>(j * 40 + lpSceneMng.GameScreenOffset.x / 2), static_cast<double>(i * 35 + 16 + 35)});
 			tmpMoveState.emplace_back(MOVE_TYPE::EXPAND, Vector2db{});
 			tmpMoveState.emplace_back(MOVE_TYPE::ATTACK, Vector2db{});
 			tmpMoveState.emplace_back(MOVE_TYPE::PITIN2, Vector2db{});
