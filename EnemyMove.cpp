@@ -216,13 +216,18 @@ void EnemyMove::MoveLR(void)
 	_pos.x = (_endPos.x - 45 + (((lpSceneMng.gameCnt / 100) % 2)*100))+ (lpSceneMng.gameCnt % 100)*(((lpSceneMng.gameCnt / 100) % 2) * -2 + 1.0);
 	if (LRCnt >= 50)
 	{
-		SetMovePrg();
+		if (moveCnt >= 50)
+		{
+			SetMovePrg();
+		}
+		moveCnt++;
 	}
 
 }
 
 void EnemyMove::MoveExpand(void)
 {
+	
 }
 
 void EnemyMove::MoveAttack(void)
