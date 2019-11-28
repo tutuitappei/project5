@@ -39,7 +39,6 @@ private:
 	int cnt;
 	int spCnt;
 	double sigCnt;
-	int LRCnt;
 	int ptinCnt;
 
 

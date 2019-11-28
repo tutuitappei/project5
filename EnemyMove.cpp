@@ -3,11 +3,11 @@
 #include"_debug\_DebugConOut.h"
 #include"Obj.h"
 
+
 EnemyMove::EnemyMove(Vector2db& pos):_pos(pos)//
 {
 	_move = nullptr;
 	_aimCnt = -1;
-	LRCnt = 0;
 }
 
 
@@ -21,8 +21,6 @@ void EnemyMove::UpData(void)
 	{
 		(this->*_move)();
 	}
-
-	LRCnt++;
 	//_pos.x++;//
 }
 
@@ -68,8 +66,10 @@ void EnemyMove::SetMovePrg(void)
 		spCnt = 0;
 		break;
 	case MOVE_TYPE::PITIN1:
-		_move = &EnemyMove::PitIn;
 		ptinCnt = 0;
+		_endPos.x = (_endPos.x - 45 + ((((lpSceneMng.gameCnt + 120) / 100) % 2) * 100)) + ((lpSceneMng.gameCnt + 120) % 100)*((((lpSceneMng.gameCnt + 120) / 100) % 2) * -2 + 1.0);
+		_move = &EnemyMove::PitIn;
+
 		break;
 	case MOVE_TYPE::LR:
 		_move = &EnemyMove::MoveLR;
@@ -77,8 +77,6 @@ void EnemyMove::SetMovePrg(void)
 	case MOVE_TYPE::EXPAND:
 		break;
 	case MOVE_TYPE::ATTACK:
-		break;
-	case MOVE_TYPE::PITIN2:
 		break;
 	default:
 		AST();
@@ -211,11 +209,9 @@ void EnemyMove::Wait(void)
 
 void EnemyMove::MoveLR(void)
 {
-	_pos.x = _pos.x + 1 * (((LRCnt / 100) % 2) * 2 - 1.0);
-	_checkPos = (_endPos - _pos);
-	_checkPos.y = abs(_checkPos.y);
-	_checkPos.x = abs(_checkPos.x);
-	/*SetMovePrg();*/
+	_pos.x = (_endPos.x - 45 + (((lpSceneMng.gameCnt / 100) % 2)*100))+ (lpSceneMng.gameCnt % 100)*(((lpSceneMng.gameCnt / 100) % 2) * -2 + 1.0);
+
+	SetMovePrg();
 }
 
 void EnemyMove::MoveExpand(void)

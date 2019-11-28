@@ -25,12 +25,12 @@ GameScene::GameScene()
 			new player({ lpSceneMng.GameScreenSize.x / 2.0 - 16.0,lpSceneMng.GameScreenSize.y - 16.0 }, { 0.0,0.0 })
 		);
 	
-	for (int i = 0; i < 5; i++)
+	for (int y = 0; y < 5; y++)
 	{
-		for (int j = 0; j < 10; j++)
+		for (int x = 0; x < 10; x++)
 		{
 			MoveState tmpMoveState;
-			tmpMoveState.emplace_back(MOVE_TYPE::WAIT, Vector2db{ 30.0+((j * 50) + (i * 50)), 0.0 });//
+			tmpMoveState.emplace_back(MOVE_TYPE::WAIT, Vector2db{ (30.0*((y * 10) + x)), 0.0 });//
 						//ã”¼•ª
 			//if ((((j + i * 10) / 2) % 3) != 2)
 			//{
@@ -42,22 +42,17 @@ GameScene::GameScene()
 			//	tmpMoveState.emplace_back(MOVE_TYPE::SIGMOID, Vector2Template<double>{ (j % 2)*-200.0 + lpSceneMng.GameScreenSize.x / 2 + lpSceneMng.GameScreenOffset.x - 48, lpSceneMng.GameScreenSize.y*(4.0 / 7.0) - (32 * 4) + lpSceneMng.GameScreenOffset.y});
 			//}
 			//tmpMoveState.emplace_back(MOVE_TYPE::SPIRAL, Vector2Template<double>{ (j % 2)*-200.0 + lpSceneMng.GameScreenSize.x / 2 + lpSceneMng.GameScreenOffset.x - 48, lpSceneMng.GameScreenSize.y*(6.0 / 7.0) - 32 * 2 - 8});
-			tmpMoveState.emplace_back(MOVE_TYPE::PITIN1, Vector2db{ static_cast<double>(j * 30.0 + lpSceneMng.GameScreenOffset.x / 2), static_cast<double>(i * 35.0 + 16.0 + 35.0) });//
-			//tmpMoveState.emplace_back(MOVE_TYPE::LR, Vector2db{ 0.0,0.0 });//
-			tmpMoveState.emplace_back(MOVE_TYPE::LR, Vector2Template<double>{ static_cast<double>(j * 40 + lpSceneMng.GameScreenOffset.x / 2), static_cast<double>(i * 35 + 16 + 35)});
+			tmpMoveState.emplace_back(MOVE_TYPE::PITIN1, Vector2db{(30.0*3.0)+(35.0*x),50.0+40.0*y});//
+			tmpMoveState.emplace_back(MOVE_TYPE::LR, Vector2Template<double>{ static_cast<double>(x * 40 + lpSceneMng.GameScreenOffset.x / 2), static_cast<double>(y * 35 + 16 + 35)});
 			tmpMoveState.emplace_back(MOVE_TYPE::EXPAND, Vector2db{});
 			tmpMoveState.emplace_back(MOVE_TYPE::ATTACK, Vector2db{});
 			tmpMoveState.emplace_back(MOVE_TYPE::PITIN2, Vector2db{});
-			/*EnemyState dete = {ENEMY_TYPE::A,{50*j,40*i}, {0,0}, tmpMoveState };*/
-			EnemyState dete = { static_cast<ENEMY_TYPE>((j + i * 10) % 3) ,{ static_cast<double>(((j + i * 10) % 2)*(lpSceneMng.GameScreenSize.x + 32) - 16),
-				static_cast<double>((((j + i * 10) / 2) % 3)*(lpSceneMng.GameScreenSize.y / 2 - 30) + 15) },
-			{ 0,0 },tmpMoveState };
-			//{
-			//	(ENEMY_TYPE)(/*y%3*/0),
-			//{ (j*30.0)+15.0,(i*30.0)+16.0 },
-			//{ 0.0,0.0 },
-			//tmpMoveState 
-			//};
+
+			EnemyState dete = { ENEMY_TYPE::A ,{ static_cast<double>(lpSceneMng.GameScreenSize.x * (((y*10)+x)%2)),
+				static_cast<double>((330 / 2))*((((y * 10)+x) / 2) % 3) + 15 },
+			{ 30,32 },tmpMoveState };
+	
+
 			_objList.emplace_back(new enemy(dete));
 
 			
@@ -103,6 +98,9 @@ unique_Base GameScene::Update(unique_Base own)
 	
 	_objList.erase(itr, _objList.end());
 	//_objList.erase(std::remove_if(_objList.begin(), _objList.end(), [](sharedOdj&obj) {return (*obj).isDead(); }), _objList.end());
+
+	lpSceneMng.gameCnt++;
+
 
 	return std::move(own);
 }

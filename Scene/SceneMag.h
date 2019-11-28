@@ -69,6 +69,7 @@ public:
 	const Vector2in ScreenCenter;
 	const Vector2in GameScreenSize;
 	const Vector2in GameScreenOffset;
+	int 	gameCnt;
 private:
 	static SceneMag *sInstance;
 

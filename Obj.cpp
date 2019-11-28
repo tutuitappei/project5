@@ -99,7 +99,6 @@ bool Obj::SetAlive(bool alive)
 	if (!_alive)
 	{
 		state(STATE::DETH);
-		TRACE("\nÅ_(^o^)Å^\n");
 	}
 	return false;
 }

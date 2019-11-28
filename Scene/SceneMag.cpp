@@ -31,6 +31,7 @@ LAYER operator++(LAYER & key)
 
 SceneMag::SceneMag() : ScreenSize{ 800,600 },ScreenCenter{ScreenSize/2},GameScreenSize{500,390},GameScreenOffset{(ScreenSize-GameScreenSize)/2}
 {
+	gameCnt = 0;
 }
 
 void SceneMag::Draw(void)
