@@ -49,6 +49,8 @@ void EnemyMove::SetMovePrg(void)
 	}
 	_startPos = _pos;
 	_endPos = _aim[_aimCnt].second;
+	_checkPos.x = 0.0;
+	_checkPos.y = 0.0;
 	switch (_aim[_aimCnt].first)
 	{
 	case MOVE_TYPE::WAIT:
@@ -59,14 +61,15 @@ void EnemyMove::SetMovePrg(void)
 	//	_move = &EnemyMove::MoveSigmoid;
 	//	sigCnt = 0;
 	//	break;
-	//case MOVE_TYPE::SPIRAL:
-	//	_move = &EnemyMove::MoveSpiral;
-	//	spr = 100;
-	//	spRad = 0.0;
-	//	spCnt = 0;
-	//	break;
+	case MOVE_TYPE::SPIRAL:
+		_move = &EnemyMove::MoveSpiral;
+		spr = 100;
+		spRad = 0.0;
+		spCnt = 0;
+		break;
 	case MOVE_TYPE::PITIN1:
 		_move = &EnemyMove::PitIn;
+		ptinCnt = 0;
 		break;
 	case MOVE_TYPE::LR:
 		_move = &EnemyMove::MoveLR;
@@ -87,7 +90,7 @@ void EnemyMove::SetMovePrg(void)
 void EnemyMove::MoveSigmoid(void)
 {
 	Vector2db _moveCnt = _startPos;
-	Vector2Template<double> checkPos = (_endPos - _pos);
+	_checkPos = (_endPos - _pos);
 	//ç∂
 	if (_startPos.x < 0)
 	{
@@ -102,11 +105,11 @@ void EnemyMove::MoveSigmoid(void)
 
 	_pos.y = ((1 / (1 + exp(-sigCnt)))*(_endPos.y - _startPos.y) + _startPos.y);
 	sigCnt += 0.05;
-	TRACE("Y,%f\n", _pos.y);
-	TRACE("X,%f\n", _pos.x);
-	checkPos.y = abs(checkPos.y);
-	checkPos.x = abs(checkPos.x);
-	if (checkPos.y < 1 && checkPos.x < 1)
+	//TRACE("Y,%f\n", _pos.y);
+	//TRACE("X,%f\n", _pos.x);
+	_checkPos.y = abs(_checkPos.y);
+	_checkPos.x = abs(_checkPos.x);
+	if (_checkPos.y < 1 && _checkPos.x < 1)
 	{
 		_pos = _endPos;
 		_rad = 0;
@@ -116,7 +119,7 @@ void EnemyMove::MoveSigmoid(void)
 
 void EnemyMove::MoveSpiral(void)
 {
-	Vector2Template<double> checkPos = (_endPos - _pos);
+	_checkPos = (_endPos - _pos);
 
 	if (_startPos.x > lpSceneMng.GameScreenSize.x / 2)
 	{
@@ -152,24 +155,28 @@ void EnemyMove::MoveSpiral(void)
 	_pos.y = _endPos.y + spr * cos(spRad);
 
 	//îºåaÇè¨Ç≥Ç≠Ç∑ÇÈ
-	spr -= 0.4;
+	spr -= 0.5;
 
-	//_rad = atan2(checkPos.y, checkPos.x) + 90.0*3.141592 / 180.0;
-	checkPos.y = abs(checkPos.y);
-	checkPos.x = abs(checkPos.x);
-	if (checkPos.y < 0.1 && checkPos.x < 0.1)
+	//_rad = atan2(_checkPos.y, _checkPos.x) + 90.0*3.141592 / 180.0;
+	_checkPos.y = abs(_checkPos.y);
+	_checkPos.x = abs(_checkPos.x);
+	if (_checkPos.y < 0.1 && _checkPos.x < 0.1)
 	{
 		_pos = _endPos;
 		_rad = 0;
 		SetMovePrg();
 	}
-	TRACE("Y,%f\n", _pos.y);
-	TRACE("X,%f\n", _pos.x);
+
 }
 
 void EnemyMove::PitIn(void)
 {
 	Vector2db _length;
+
+	TRACE("%d\n", ptinCnt)
+
+		ptinCnt++;
+
 	if (abs((_endPos-_startPos)/120.0) > abs(_endPos - _pos))//abs((_endPos-_startPos)/120.0)Çä÷êîâª
 	{
 		_pos = _endPos;
@@ -182,8 +189,7 @@ void EnemyMove::PitIn(void)
 		_length = _endPos - _pos;
 		_rad = std::atan2(_length.y, _length.x) + (90 * 3.141592) / 180;
 	}
-	TRACE("Y,%f\n", _pos.y);
-	TRACE("X,%f\n", _pos.x);
+
 	//if (_pos.y <= (lpSceneMng.GameScreenSize.y + 100.0))
 	//{
 	//	_pos.y = (lpSceneMng.GameScreenOffset.y - 100);
@@ -204,10 +210,10 @@ void EnemyMove::Wait(void)
 
 void EnemyMove::MoveLR(void)
 {
-	//_pos.x = _pos.x + 1 * (((LRCnt / 100) % 2) * 2 - 1.0);
-	//Vector2Template<double> checkPos = (_endPos - _pos);
-	//checkPos.y = abs(checkPos.y);
-	//checkPos.x = abs(checkPos.x);
+	_pos.x = _pos.x + 1 * (((LRCnt / 100) % 2) * 2 - 1.0);
+	_checkPos = (_endPos - _pos);
+	_checkPos.y = abs(_checkPos.y);
+	_checkPos.x = abs(_checkPos.x);
 	/*SetMovePrg();*/
 }
 

@@ -40,6 +40,7 @@ private:
 	int spCnt;
 	double sigCnt;
 	int LRCnt;
+	int ptinCnt;
 
 
 	MoveState _aim;
@@ -50,6 +51,8 @@ private:
 	Vector2db _startPos;
 	
 	Vector2db _endPos;
+
+	Vector2db _checkPos;
 
 	double spr;
 	double spRad;
