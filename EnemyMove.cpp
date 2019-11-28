@@ -155,7 +155,7 @@ void EnemyMove::MoveSpiral(void)
 	_pos.y = _endPos.y + spr * cos(spRad);
 
 	//”¼Œa‚ğ¬‚³‚­‚·‚é
-	spr -= 0.5;
+	spr -= 0.4;
 
 	//_rad = atan2(_checkPos.y, _checkPos.x) + 90.0*3.141592 / 180.0;
 	_checkPos.y = abs(_checkPos.y);
@@ -179,7 +179,8 @@ void EnemyMove::PitIn(void)
 
 	if (abs((_endPos-_startPos)/120.0) > abs(_endPos - _pos))//abs((_endPos-_startPos)/120.0)‚ğŠÖ”‰»
 	{
-		_pos = _endPos;
+		_pos.y = _endPos.y;
+		_pos.x = _endPos.x;
 		_rad = 0.0;
 		SetMovePrg();
 	}

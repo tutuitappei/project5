@@ -41,7 +41,7 @@ GameScene::GameScene()
 			//{
 			//	tmpMoveState.emplace_back(MOVE_TYPE::SIGMOID, Vector2Template<double>{ (j % 2)*-200.0 + lpSceneMng.GameScreenSize.x / 2 + lpSceneMng.GameScreenOffset.x - 48, lpSceneMng.GameScreenSize.y*(4.0 / 7.0) - (32 * 4) + lpSceneMng.GameScreenOffset.y});
 			//}
-			tmpMoveState.emplace_back(MOVE_TYPE::SPIRAL, Vector2Template<double>{ (j % 2)*-200.0 + lpSceneMng.GameScreenSize.x / 2 + lpSceneMng.GameScreenOffset.x - 48, lpSceneMng.GameScreenSize.y*(6.0 / 7.0) - 32 * 2 - 8});
+			//tmpMoveState.emplace_back(MOVE_TYPE::SPIRAL, Vector2Template<double>{ (j % 2)*-200.0 + lpSceneMng.GameScreenSize.x / 2 + lpSceneMng.GameScreenOffset.x - 48, lpSceneMng.GameScreenSize.y*(6.0 / 7.0) - 32 * 2 - 8});
 			tmpMoveState.emplace_back(MOVE_TYPE::PITIN1, Vector2db{ static_cast<double>(j * 30.0 + lpSceneMng.GameScreenOffset.x / 2), static_cast<double>(i * 35.0 + 16.0 + 35.0) });//
 			//tmpMoveState.emplace_back(MOVE_TYPE::LR, Vector2db{ 0.0,0.0 });//
 			tmpMoveState.emplace_back(MOVE_TYPE::LR, Vector2Template<double>{ static_cast<double>(j * 40 + lpSceneMng.GameScreenOffset.x / 2), static_cast<double>(i * 35 + 16 + 35)});
