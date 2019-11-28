@@ -3,7 +3,7 @@
 #include"_debug\_DebugConOut.h"
 #include"Obj.h"
 
-int EnemyMove::LRCnt;
+int EnemyMove::enemyCnt;
 
 EnemyMove::EnemyMove(Vector2db& pos):_pos(pos)//
 {
@@ -73,7 +73,7 @@ void EnemyMove::SetMovePrg(void)
 		
 		break;
 	case MOVE_TYPE::LR:
-		LRCnt = LRCnt + 1;
+		enemyCnt = enemyCnt + 1;
 		moveCnt = 0.0;
 		_move = &EnemyMove::MoveLR;
 		break;
@@ -214,9 +214,9 @@ void EnemyMove::Wait(void)
 void EnemyMove::MoveLR(void)
 {
 	_pos.x = (_endPos.x - 45 + (((lpSceneMng.gameCnt / 100) % 2)*100))+ (lpSceneMng.gameCnt % 100)*(((lpSceneMng.gameCnt / 100) % 2) * -2 + 1.0);
-	if (LRCnt >= 50)
+	if (enemyCnt >= 50)
 	{
-		if (moveCnt >= 50)
+		if (moveCnt >= 52)
 		{
 			SetMovePrg();
 		}
@@ -227,7 +227,8 @@ void EnemyMove::MoveLR(void)
 
 void EnemyMove::MoveExpand(void)
 {
-	
+	_pos.x += ((_aim[_aimCnt].second.x - static_cast<double>(lpSceneMng.GameScreenSize.x / 2))*(((lpSceneMng.gameCnt / 30) % 2) * 2.0 - 1.0)) / 100.0;
+	_pos.y += ((_aim[_aimCnt].second.y )*(((lpSceneMng.gameCnt / 30) % 2) * 2.0 - 1.0)) / 100.0;
 }
 
 void EnemyMove::MoveAttack(void)

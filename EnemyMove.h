@@ -42,7 +42,7 @@ private:
 	int ptinCnt;
 	double moveCnt;
 
-	static  int LRCnt;
+	static  int enemyCnt;
 
 	MoveState _aim;
 	int _aimCnt;
