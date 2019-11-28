@@ -3,6 +3,7 @@
 #include"_debug\_DebugConOut.h"
 #include"Obj.h"
 
+int EnemyMove::LRCnt;
 
 EnemyMove::EnemyMove(Vector2db& pos):_pos(pos)//
 {
@@ -55,10 +56,10 @@ void EnemyMove::SetMovePrg(void)
 		_move = &EnemyMove::Wait;
 		cnt = 0;
 		break;
-	//case MOVE_TYPE::SIGMOID:
-	//	_move = &EnemyMove::MoveSigmoid;
-	//	sigCnt = 0;
-	//	break;
+	case MOVE_TYPE::SIGMOID:
+		_move = &EnemyMove::MoveSigmoid;
+		sigCnt = 0;
+		break;
 	case MOVE_TYPE::SPIRAL:
 		_move = &EnemyMove::MoveSpiral;
 		spr = 100;
@@ -66,15 +67,18 @@ void EnemyMove::SetMovePrg(void)
 		spCnt = 0;
 		break;
 	case MOVE_TYPE::PITIN1:
+		_move = &EnemyMove::PitIn;
 		ptinCnt = 0;
 		_endPos.x = (_endPos.x - 45 + ((((lpSceneMng.gameCnt + 120) / 100) % 2) * 100)) + ((lpSceneMng.gameCnt + 120) % 100)*((((lpSceneMng.gameCnt + 120) / 100) % 2) * -2 + 1.0);
-		_move = &EnemyMove::PitIn;
-
+		
 		break;
 	case MOVE_TYPE::LR:
+		LRCnt = LRCnt + 1;
+		moveCnt = 0.0;
 		_move = &EnemyMove::MoveLR;
 		break;
 	case MOVE_TYPE::EXPAND:
+		_move = &EnemyMove::MoveExpand;
 		break;
 	case MOVE_TYPE::ATTACK:
 		break;
@@ -90,7 +94,7 @@ void EnemyMove::MoveSigmoid(void)
 	Vector2db _moveCnt = _startPos;
 	_checkPos = (_endPos - _pos);
 	//ç∂
-	if (_startPos.x < 0)
+	if (_startPos.x <= 0)
 	{
 		_pos.x++;
 	}
@@ -171,9 +175,9 @@ void EnemyMove::PitIn(void)
 {
 	Vector2db _length;
 
-	TRACE("%d\n", ptinCnt)
+	//TRACE("%d\n", ptinCnt)
 
-		ptinCnt++;
+	//	ptinCnt++;
 
 	if (abs((_endPos-_startPos)/120.0) > abs(_endPos - _pos))//abs((_endPos-_startPos)/120.0)Çä÷êîâª
 	{
@@ -210,8 +214,11 @@ void EnemyMove::Wait(void)
 void EnemyMove::MoveLR(void)
 {
 	_pos.x = (_endPos.x - 45 + (((lpSceneMng.gameCnt / 100) % 2)*100))+ (lpSceneMng.gameCnt % 100)*(((lpSceneMng.gameCnt / 100) % 2) * -2 + 1.0);
+	if (LRCnt >= 50)
+	{
+		SetMovePrg();
+	}
 
-	SetMovePrg();
 }
 
 void EnemyMove::MoveExpand(void)

@@ -40,7 +40,9 @@ private:
 	int spCnt;
 	double sigCnt;
 	int ptinCnt;
+	double moveCnt;
 
+	static  int LRCnt;
 
 	MoveState _aim;
 	int _aimCnt;
