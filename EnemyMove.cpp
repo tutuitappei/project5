@@ -62,7 +62,7 @@ void EnemyMove::SetMovePrg(void)
 		break;
 	case MOVE_TYPE::SPIRAL:
 		_move = &EnemyMove::MoveSpiral;
-		spr = 100;
+		spr = 65;
 		spRad = 0.0;
 		spCnt = 0;
 		break;
@@ -107,8 +107,6 @@ void EnemyMove::MoveSigmoid(void)
 
 	_pos.y = ((1 / (1 + exp(-sigCnt)))*(_endPos.y - _startPos.y) + _startPos.y);
 	sigCnt += 0.05;
-	//TRACE("Y,%f\n", _pos.y);
-	//TRACE("X,%f\n", _pos.x);
 	_checkPos.y = abs(_checkPos.y);
 	_checkPos.x = abs(_checkPos.x);
 	if (_checkPos.y < 1 && _checkPos.x < 1)
@@ -151,15 +149,12 @@ void EnemyMove::MoveSpiral(void)
 	}
 
 
-
-
 	_pos.x = _endPos.x + spr * sin(spRad);
 	_pos.y = _endPos.y + spr * cos(spRad);
 
-	//”¼Œa‚ð¬‚³‚­‚·‚é
-	spr -= 0.4;
+	spr -= 0.2;
 
-	//_rad = atan2(_checkPos.y, _checkPos.x) + 90.0*3.141592 / 180.0;
+	_rad = atan2(_checkPos.y, _checkPos.x) + 90.0*3.141592;
 	_checkPos.y = abs(_checkPos.y);
 	_checkPos.x = abs(_checkPos.x);
 	if (_checkPos.y < 0.1 && _checkPos.x < 0.1)
@@ -174,12 +169,13 @@ void EnemyMove::MoveSpiral(void)
 void EnemyMove::PitIn(void)
 {
 	Vector2db _length;
+	_length = (_endPos - _pos);
 
 	//TRACE("%d\n", ptinCnt)
 
 	//	ptinCnt++;
 
-	if (abs((_endPos-_startPos)/120.0) > abs(_endPos - _pos))//abs((_endPos-_startPos)/120.0)‚ðŠÖ”‰»
+	if (abs((_endPos-_startPos)/120.0) > abs(_endPos - _pos))
 	{
 		_pos.y = _endPos.y;
 		_pos.x = _endPos.x;
@@ -193,12 +189,6 @@ void EnemyMove::PitIn(void)
 		_rad = std::atan2(_length.y, _length.x) + (90 * 3.141592) / 180;
 	}
 
-	//if (_pos.y <= (lpSceneMng.GameScreenSize.y + 100.0))
-	//{
-	//	_pos.y = (lpSceneMng.GameScreenOffset.y - 100);
-	//	_length = _endPos - _pos;
-	//	_rad = std::atan2(_length.y, _length.x) + (90 * 3.141592) / 180;
-	//}
 
 }
 
@@ -216,10 +206,10 @@ void EnemyMove::MoveLR(void)
 	_pos.x = (_endPos.x - 45 + (((lpSceneMng.gameCnt / 100) % 2)*100))+ (lpSceneMng.gameCnt % 100)*(((lpSceneMng.gameCnt / 100) % 2) * -2 + 1.0);
 	if (enemyCnt >= 50)
 	{
-		if (moveCnt >= 52)
-		{
+		//if (moveCnt >= 52)
+		//{
 			SetMovePrg();
-		}
+		//}
 		moveCnt++;
 	}
 
