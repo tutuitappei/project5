@@ -157,7 +157,7 @@ void EnemyMove::MoveSpiral(void)
 	_pos.x = _endPos.x + spr * sin(spRad);
 	_pos.y = _endPos.y + spr * cos(spRad);
 
-	spr -= 0.2;
+	spr -= 0.4;
 
 	_rad = std::atan2(_pos.y - _oldPos.y, _pos.x - _oldPos.x) + 90.0*3.141592 / 180;
 	_checkPos.y = abs(_checkPos.y);
@@ -207,7 +207,7 @@ void EnemyMove::MoveLR(void)
 	_pos.x = (_endPos.x - 45 + (((lpSceneMng.gameCnt / 100) % 2)*100))+ (lpSceneMng.gameCnt % 100)*(((lpSceneMng.gameCnt / 100) % 2) * -2 + 1.0);
 	if (enemyCnt >= 50)
 	{
-		if (moveCnt >= 90)
+		if (moveCnt >= 140)
 		{
 			SetMovePrg();
 		}
@@ -218,8 +218,8 @@ void EnemyMove::MoveLR(void)
 
 void EnemyMove::MoveExpand(void)
 {
-	_pos.x -= ((_aim[_aimCnt].second.x - static_cast<double>(lpSceneMng.GameScreenSize.x / 2))*(((lpSceneMng.gameCnt / 30) % 2) * 2.0 - 1.0)) / 100.0;
-	_pos.y -= ((_aim[_aimCnt].second.y )*(((lpSceneMng.gameCnt / 30) % 2) * 2.0 - 1.0)) / 100.0;
+	_pos.x += ((_aim[_aimCnt].second.x - static_cast<double>(lpSceneMng.GameScreenSize.x / 2))*(((lpSceneMng.gameCnt / 30) % 2) * 2.0 - 1.0)) / 100.0;
+	_pos.y += ((_aim[_aimCnt].second.y )*(((lpSceneMng.gameCnt / 30) % 2) * 2.0 - 1.0)) / 100.0;
 }
 
 void EnemyMove::MoveAttack(void)
