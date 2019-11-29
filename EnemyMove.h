@@ -56,6 +56,9 @@ private:
 
 	Vector2db _checkPos;										//‹——£
 
+	Vector2db _oneMoveVec;										// ‚PÌÚ°Ñ“–‚½‚è‚ÌˆÚ“®—Ê
+	double _moveGain;											// ¼¸ŞÓ²ÄŞ‚Ì•
+
 	double spr;													//½Êß²×Ù”¼Œa
 	double spRad;												//‰ñ“]Šp
 

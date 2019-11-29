@@ -58,11 +58,13 @@ void EnemyMove::SetMovePrg(void)
 		break;
 	case MOVE_TYPE::SIGMOID:
 		_move = &EnemyMove::MoveSigmoid;
+		_moveGain = -5;
+		_oneMoveVec.x = ((_endPos.x - _startPos.x) / 90.0);
 		sigCnt = 0;
 		break;
 	case MOVE_TYPE::SPIRAL:
 		_move = &EnemyMove::MoveSpiral;
-		spr = 65;
+		spr = 50;
 		spRad = 0.0;
 		spCnt = 0;
 		break;
@@ -92,30 +94,32 @@ void EnemyMove::MoveSigmoid(void)
 {
 	Vector2db _moveCnt = _startPos;
 	_checkPos = (_endPos - _pos);
-	//左
-	if (_startPos.x <= 0)
-	{
-		_pos.x++;
-	}
-	//右
-	else
-	{
-		_pos.x--;
 
-	}
-	_pos.y = ((1 / (1 + exp(-sigCnt)))*(_endPos.y - _startPos.y) + _startPos.y);
-
-	sigCnt += 0.05;
-	_rad = std::atan2(_pos.y - _oldPos.y, _pos.x - _oldPos.x) + 90.0*3.141592 / 180;
 	_checkPos.y = abs(_checkPos.y);
 	_checkPos.x = abs(_checkPos.x);
-	if (_checkPos.y < 1 && _checkPos.x < 1)
+
+	// 最終地点の場所かﾁｪｯｸ
+	if (_checkPos.x >= abs(_oneMoveVec.x))
 	{
-		_pos = _endPos;
-		_rad = 0;
+		// 一番最初に前ﾌﾚｰﾑにいた座標を格納する
+		_oldPos = _pos;
+
+		// ｼｸﾞﾓｲﾄﾞ関数
+		_pos.y = ((1.0 / (1.0 + exp(-_moveGain))) * (_endPos.y - _startPos.y)) + _startPos.y;
+
+		// X移動
+		_pos.x += _oneMoveVec.x;
+
+		// 今の座標と前の座標で角度を計算する
+		_rad = std::atan2(_pos.y - _oldPos.y, _pos.x - _oldPos.x) + 90.0*3.141592 / 180;
+
+		// 幅を変える
+		_moveGain += 0.12;
+	}
+	else
+	{
 		SetMovePrg();
 	}
-	_oldPos = _pos;
 }
 
 void EnemyMove::MoveSpiral(void)
@@ -203,10 +207,10 @@ void EnemyMove::MoveLR(void)
 	_pos.x = (_endPos.x - 45 + (((lpSceneMng.gameCnt / 100) % 2)*100))+ (lpSceneMng.gameCnt % 100)*(((lpSceneMng.gameCnt / 100) % 2) * -2 + 1.0);
 	if (enemyCnt >= 50)
 	{
-		//if (moveCnt >= 52)
-		//{
+		if (moveCnt >= 90)
+		{
 			SetMovePrg();
-		//}
+		}
 		moveCnt++;
 	}
 
@@ -214,8 +218,8 @@ void EnemyMove::MoveLR(void)
 
 void EnemyMove::MoveExpand(void)
 {
-	_pos.x += ((_aim[_aimCnt].second.x - static_cast<double>(lpSceneMng.GameScreenSize.x / 2))*(((lpSceneMng.gameCnt / 30) % 2) * 2.0 - 1.0)) / 100.0;
-	_pos.y += ((_aim[_aimCnt].second.y )*(((lpSceneMng.gameCnt / 30) % 2) * 2.0 - 1.0)) / 100.0;
+	_pos.x -= ((_aim[_aimCnt].second.x - static_cast<double>(lpSceneMng.GameScreenSize.x / 2))*(((lpSceneMng.gameCnt / 30) % 2) * 2.0 - 1.0)) / 100.0;
+	_pos.y -= ((_aim[_aimCnt].second.y )*(((lpSceneMng.gameCnt / 30) % 2) * 2.0 - 1.0)) / 100.0;
 }
 
 void EnemyMove::MoveAttack(void)
