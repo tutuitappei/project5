@@ -19,7 +19,7 @@ using MoveState = std::vector<std::pair<MOVE_TYPE, Vector2db>>;
 class EnemyMove
 {
 public:
-	EnemyMove(Vector2db& pos);//
+	EnemyMove(Vector2Template<double>& pos, double& rad);//
 	~EnemyMove();
 	void UpData(void);
 	bool SetMoveState(MoveState& state,bool newFlag);
@@ -58,7 +58,7 @@ private:
 	double spr;
 	double spRad;
 
-	double _rad;
+	double& _rad;
 
 	double rag;
 };

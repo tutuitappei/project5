@@ -31,7 +31,7 @@ public:
 	~enemy();
 
 private:
-	EnemyMove _moveCtl{ _pos };
+	EnemyMove _moveCtl{ _pos , _rad };
 	void init(void);
 	ENEMY_TYPE _type;
 };

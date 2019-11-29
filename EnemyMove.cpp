@@ -5,7 +5,7 @@
 
 int EnemyMove::enemyCnt;
 
-EnemyMove::EnemyMove(Vector2db& pos):_pos(pos)//
+EnemyMove::EnemyMove(Vector2Template<double>& pos, double& rad) :_pos(pos), _rad(rad)
 {
 	_move = nullptr;
 	_aimCnt = -1;
@@ -70,7 +70,6 @@ void EnemyMove::SetMovePrg(void)
 		_move = &EnemyMove::PitIn;
 		ptinCnt = 0;
 		_endPos.x = (_endPos.x - 45 + ((((lpSceneMng.gameCnt + 120) / 100) % 2) * 100)) + ((lpSceneMng.gameCnt + 120) % 100)*((((lpSceneMng.gameCnt + 120) / 100) % 2) * -2 + 1.0);
-		
 		break;
 	case MOVE_TYPE::LR:
 		enemyCnt = enemyCnt + 1;
@@ -107,6 +106,7 @@ void EnemyMove::MoveSigmoid(void)
 
 	_pos.y = ((1 / (1 + exp(-sigCnt)))*(_endPos.y - _startPos.y) + _startPos.y);
 	sigCnt += 0.05;
+	_rad = atan2(_checkPos.y, _checkPos.x) + 90.0*3.141592;
 	_checkPos.y = abs(_checkPos.y);
 	_checkPos.x = abs(_checkPos.x);
 	if (_checkPos.y < 1 && _checkPos.x < 1)
@@ -170,10 +170,6 @@ void EnemyMove::PitIn(void)
 {
 	Vector2db _length;
 	_length = (_endPos - _pos);
-
-	//TRACE("%d\n", ptinCnt)
-
-	//	ptinCnt++;
 
 	if (abs((_endPos-_startPos)/120.0) > abs(_endPos - _pos))
 	{
