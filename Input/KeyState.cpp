@@ -16,21 +16,22 @@ KeyState::KeyState()
 	_keyConDef.emplace_back(KEY_INPUT_S);
 
 	FILE* fp;
-	if (fopen_s(&fp, "data/key.dat", "rb") != NULL)
+	fopen_s(&fp, "data/key.dat", "r");
+	if (fp != nullptr)
 	{
-		_keyCon = _keyConDef;
+		_keyCon.resize(static_cast<size_t>(end(INPUT_ID())));
+		fread(_keyCon.data(), sizeof(_keyCon), _keyCon.size(), fp);
+
+		fclose(fp);
 	}
 	else
 	{
-		_keyCon.resize(static_cast<size_t>(end(INPUT_ID())));
-		fread(_keyCon.data(), sizeof(_keyCon[0]), _keyCon.size(), fp);
-
-		fclose(fp);
+		_keyCon = _keyConDef;
 	}
 
 	modoKeyOld = 1;
 	
-	func = &KeyState::RefKeyData;
+	func = { &KeyState::RefKeyData };
 }
 
 
@@ -95,7 +96,8 @@ void KeyState::SetKeyConfig(void)
 			if (_confID == end(_confID))
 			{
 				FILE* fp;
-				if (fopen_s(&fp, "data/key.dat", "wb") != NULL)
+				fopen_s(&fp, "data/key.dat", "wb");
+				if (fp != nullptr)
 				{
 					fwrite(_keyCon.data(), sizeof(_keyCon[0]), _keyCon.size(), fp);
 
