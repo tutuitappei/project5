@@ -9,6 +9,8 @@ EnemyMove::EnemyMove(Vector2Template<double>& pos, double& rad) :_pos(pos), _rad
 {
 	_move = nullptr;
 	_aimCnt = -1;
+	enemyMax = 50;
+	pai = 3.141592;
 }
 
 
@@ -64,9 +66,10 @@ void EnemyMove::SetMovePrg(void)
 		break;
 	case MOVE_TYPE::SPIRAL:
 		_move = &EnemyMove::MoveSpiral;
-		spr = 50;
+		spr = 35;
 		spRad = 0.0;
 		spCnt = 0;
+		spSpeed = 0.2;
 		break;
 	case MOVE_TYPE::PITIN1:
 		_move = &EnemyMove::PitIn;
@@ -74,6 +77,7 @@ void EnemyMove::SetMovePrg(void)
 		_endPos.x = (_endPos.x - 45 + ((((lpSceneMng.gameCnt + 120) / 100) % 2) * 100)) + ((lpSceneMng.gameCnt + 120) % 100)*((((lpSceneMng.gameCnt + 120) / 100) % 2) * -2 + 1.0);
 		break;
 	case MOVE_TYPE::LR:
+		LRCnt = 110.0;
 		enemyCnt = enemyCnt + 1;
 		moveCnt = 0.0;
 		_move = &EnemyMove::MoveLR;
@@ -98,22 +102,16 @@ void EnemyMove::MoveSigmoid(void)
 	_checkPos.y = abs(_checkPos.y);
 	_checkPos.x = abs(_checkPos.x);
 
-	// 最終地点の場所かﾁｪｯｸ
 	if (_checkPos.x >= abs(_oneMoveVec.x))
 	{
-		// 一番最初に前ﾌﾚｰﾑにいた座標を格納する
 		_oldPos = _pos;
 
-		// ｼｸﾞﾓｲﾄﾞ関数
 		_pos.y = ((1.0 / (1.0 + exp(-_moveGain))) * (_endPos.y - _startPos.y)) + _startPos.y;
 
-		// X移動
 		_pos.x += _oneMoveVec.x;
 
-		// 今の座標と前の座標で角度を計算する
-		_rad = std::atan2(_pos.y - _oldPos.y, _pos.x - _oldPos.x) + 90.0*3.141592 / 180;
+		_rad = std::atan2(_pos.y - _oldPos.y, _pos.x - _oldPos.x) + 90.0* pai / 180;
 
-		// 幅を変える
 		_moveGain += 0.12;
 	}
 	else
@@ -157,9 +155,9 @@ void EnemyMove::MoveSpiral(void)
 	_pos.x = _endPos.x + spr * sin(spRad);
 	_pos.y = _endPos.y + spr * cos(spRad);
 
-	spr -= 0.4;
+	spr -= spSpeed;
 
-	_rad = std::atan2(_pos.y - _oldPos.y, _pos.x - _oldPos.x) + 90.0*3.141592 / 180;
+	_rad = std::atan2(_pos.y - _oldPos.y, _pos.x - _oldPos.x) + 90.0* pai / 180;
 	_checkPos.y = abs(_checkPos.y);
 	_checkPos.x = abs(_checkPos.x);
 	if (_checkPos.y < 0.1 && _checkPos.x < 0.1)
@@ -187,7 +185,7 @@ void EnemyMove::PitIn(void)
 	{
 		_pos += (_endPos - _startPos) / 120.0;
 		_length = _endPos - _pos;
-		_rad = std::atan2(_length.y, _length.x) + (90 * 3.141592) / 180;
+		_rad = std::atan2(_length.y, _length.x) + (90 * pai) / 180;
 	}
 
 
@@ -205,9 +203,9 @@ void EnemyMove::Wait(void)
 void EnemyMove::MoveLR(void)
 {
 	_pos.x = (_endPos.x - 45 + (((lpSceneMng.gameCnt / 100) % 2)*100))+ (lpSceneMng.gameCnt % 100)*(((lpSceneMng.gameCnt / 100) % 2) * -2 + 1.0);
-	if (enemyCnt >= 50)
+	if (enemyCnt >= enemyMax)
 	{
-		if (moveCnt >= 140)
+		if (moveCnt >= LRCnt)
 		{
 			SetMovePrg();
 		}
@@ -218,8 +216,8 @@ void EnemyMove::MoveLR(void)
 
 void EnemyMove::MoveExpand(void)
 {
-	_pos.x += ((_aim[_aimCnt].second.x - static_cast<double>(lpSceneMng.GameScreenSize.x / 2))*(((lpSceneMng.gameCnt / 30) % 2) * 2.0 - 1.0)) / 100.0;
-	_pos.y += ((_aim[_aimCnt].second.y )*(((lpSceneMng.gameCnt / 30) % 2) * 2.0 - 1.0)) / 100.0;
+	_pos.x -= ((_aim[_aimCnt].second.x - static_cast<double>(lpSceneMng.GameScreenSize.x / 2))*(((lpSceneMng.gameCnt / 30) % 2) * 2.0 - 1.0)) / 100.0;
+	_pos.y -= ((_aim[_aimCnt].second.y )*(((lpSceneMng.gameCnt / 30) % 2) * 2.0 - 1.0)) / 100.0;
 }
 
 void EnemyMove::MoveAttack(void)

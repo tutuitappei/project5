@@ -41,7 +41,11 @@ private:
 	double sigCnt;												//ｼｸﾞﾓｲﾄﾞ用ｶｳﾝﾄ
 	int ptinCnt;												//ﾋﾟｯﾄｲﾝ用ｶｳﾝﾄ
 	double moveCnt;												//LR用ｶｳﾝﾄ
+	double LRCnt;												//LR動作ﾌﾚｰﾑ数
 
+	double pai;													//π
+
+	int enemyMax;												//敵の総数
 	static  int enemyCnt;										//LR中の敵数
 
 	MoveState _aim;												//移動タイプ、ゴール地点座標
@@ -61,6 +65,7 @@ private:
 
 	double spr;													//ｽﾊﾟｲﾗﾙ半径
 	double spRad;												//回転角
+	double spSpeed;												//半径縮小の速度
 
 	double& _rad;												//角度
 };

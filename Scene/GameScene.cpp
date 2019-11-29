@@ -31,7 +31,7 @@ GameScene::GameScene()
 		{
 			MoveState tmpMoveState;
 			tmpMoveState.emplace_back(MOVE_TYPE::WAIT, Vector2db{ (30.0*((y * 10) + x)), 0.0 });//
-			tmpMoveState.emplace_back(MOVE_TYPE::SIGMOID, Vector2db{ static_cast<double>((lpSceneMng.GameScreenSize.x / 4) + ((lpSceneMng.GameScreenSize.x / 2) * !((x % 2)))), (lpSceneMng.GameScreenSize.y * (5.0 / 6.0)) - (100 * ((((y * 10) + x) % 6) / 4)) });
+			tmpMoveState.emplace_back(MOVE_TYPE::SIGMOID, Vector2db{ static_cast<double>((lpSceneMng.GameScreenSize.x / 4) + ((lpSceneMng.GameScreenSize.x / 2) * !((x % 2)))), (lpSceneMng.ScreenCenter.y+10.0) });
 			tmpMoveState.emplace_back(MOVE_TYPE::SPIRAL, Vector2db{ static_cast<double>((lpSceneMng.GameScreenSize.x / 4) + ((lpSceneMng.GameScreenSize.x / 2) * !((x % 2)))), (lpSceneMng.GameScreenSize.y * (5.0 / 6.0)) - 50 });
 			tmpMoveState.emplace_back(MOVE_TYPE::PITIN1, Vector2db{ static_cast<double>(30.0*3.0) + (35.0*x),static_cast<double>(50.0 + 40.0*y) });//
 			tmpMoveState.emplace_back(MOVE_TYPE::LR,	 Vector2db{ static_cast<double>(30.0*3.0) + (35.0*x),static_cast<double>(50.0 + 40.0*y) });
