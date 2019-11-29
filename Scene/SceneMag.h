@@ -20,9 +20,9 @@ enum class DRAW_QUE	//enum clase‚ª‚ ‚é‚±‚Æ‚Å“¯‚¶‚à‚Ì‚Å‚à•Ê‚ÌŒ^‚Æ‚µ‚Äˆµ‚¦‚é@ˆÀ‘S
 enum class LAYER
 {
 	BG,
-	/*UI,*/
-	CHAR,
 	UI,
+	CHAR,
+	/*UI,*/
 	MAX
 };
 

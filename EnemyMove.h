@@ -48,6 +48,7 @@ private:
 	int _aimCnt;												//aimの現在地
 	
 	Vector2db & _pos;											//現在地
+	Vector2db  _oldPos;											//1ﾌﾚｰﾑ前座標
 	
 	Vector2db _startPos;										//開始地点
 	

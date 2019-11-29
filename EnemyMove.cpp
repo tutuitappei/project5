@@ -103,10 +103,10 @@ void EnemyMove::MoveSigmoid(void)
 		_pos.x--;
 
 	}
-
 	_pos.y = ((1 / (1 + exp(-sigCnt)))*(_endPos.y - _startPos.y) + _startPos.y);
+
 	sigCnt += 0.05;
-	_rad = atan2(_checkPos.y, _checkPos.x) + 90.0*3.141592;
+	_rad = std::atan2(_pos.y - _oldPos.y, _pos.x - _oldPos.x) + 90.0*3.141592 / 180;
 	_checkPos.y = abs(_checkPos.y);
 	_checkPos.x = abs(_checkPos.x);
 	if (_checkPos.y < 1 && _checkPos.x < 1)
@@ -115,6 +115,7 @@ void EnemyMove::MoveSigmoid(void)
 		_rad = 0;
 		SetMovePrg();
 	}
+	_oldPos = _pos;
 }
 
 void EnemyMove::MoveSpiral(void)
@@ -154,7 +155,7 @@ void EnemyMove::MoveSpiral(void)
 
 	spr -= 0.2;
 
-	_rad = atan2(_checkPos.y, _checkPos.x) + 90.0*3.141592;
+	_rad = std::atan2(_pos.y - _oldPos.y, _pos.x - _oldPos.x) + 90.0*3.141592 / 180;
 	_checkPos.y = abs(_checkPos.y);
 	_checkPos.x = abs(_checkPos.x);
 	if (_checkPos.y < 0.1 && _checkPos.x < 0.1)
@@ -163,7 +164,7 @@ void EnemyMove::MoveSpiral(void)
 		_rad = 0;
 		SetMovePrg();
 	}
-
+	_oldPos = _pos;
 }
 
 void EnemyMove::PitIn(void)
