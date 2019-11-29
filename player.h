@@ -7,12 +7,12 @@ class player :
 {
 public:
 	player();
-	player(Vector2db pos, Vector2db size);//
+	player(Vector2db pos, Vector2db size);	//À•WA»²½Ş
 	void Update(/*sharedOdj plObj*/) override;
 	~player();
 
 private:
-	void init(void);
-	std::shared_ptr<InputState> _input;
+	void init(void);					//‰Šú‰»
+	std::shared_ptr<InputState> _input;	//·°‘€ìî•ñ
 };
 

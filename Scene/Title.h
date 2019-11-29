@@ -7,6 +7,6 @@ class Title :
 public:
 	Title();
 	~Title();
-	unique_Base Update(unique_Base own);
+	unique_Base Update(unique_Base own);	//î•ñXV
 };
 

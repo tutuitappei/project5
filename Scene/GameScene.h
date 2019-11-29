@@ -11,11 +11,11 @@ class GameScene :
 {
 public:
 	GameScene();
-	unique_Base Update(unique_Base own)override;
+	unique_Base Update(unique_Base own)override;			//更新
 	~GameScene();
 private:
-	std::vector<sharedOdj> _objList ;
+	std::vector<sharedOdj> _objList ;						//ｵﾌﾞｼﾞｪｸﾄ用ﾘｽﾄ
 
-	virtual void RunActQue(std::vector<ActQueT> actList);
+	virtual void RunActQue(std::vector<ActQueT> actList);	//ｱｸｼｮﾝ用ｷｭｰ
 };
 

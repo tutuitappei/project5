@@ -20,6 +20,6 @@ class BaseScene
 public:
 	BaseScene();
 	virtual ~BaseScene();
-	virtual unique_Base Update(unique_Base own) = 0;
+	virtual unique_Base Update(unique_Base own) = 0;		//XV
 };
 

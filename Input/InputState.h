@@ -13,10 +13,10 @@ public:
 	virtual void Updata(void) = 0;
 	const KeyMap& state(void) const;
 	const KeyPair& state(INPUT_ID id) const;
-	bool state(INPUT_ID id, int date);
+	bool state(INPUT_ID id, int date);			//∑∞√ﬁ∞¿
 	void SetOld(void);
 private:
-	KeyMap _state;
+	KeyMap _state;								//∑∞èÛë‘
 
 };
 

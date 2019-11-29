@@ -4,6 +4,7 @@
 #include<Windows.h>
 #include<memory>
 
+//±»°Ä
 #define AST() {\
 	CHAR ast_mes[256];\
 	wsprintf(ast_mes, "%s %ds–Ú\0",__FILE__,__LINE__);\
@@ -12,7 +13,7 @@
 
 
 #define TRACE(fmt,...) printf(fmt,__VA_ARGS__);
-
+//QÆŒÄo‚µ
 class _DebugConOut
 {
 public:
@@ -21,6 +22,7 @@ public:
 		return *Instance;
 	}
 private:
+//ÃŞØ°À°
 	struct _DebugConOutDeleter
 	{
 		void operator()(_DebugConOut* _debugConOutDeleter) const

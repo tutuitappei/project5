@@ -9,7 +9,7 @@ public:
 	void Update(/*sharedOdj plObj*/) override;
 	~bullet();
 private:
-	int Init();
+	int Init();			//‰Šú‰»
 	void destroy();
 };
 

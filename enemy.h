@@ -18,21 +18,20 @@ enum class ENEMY_STATE
 	MAX
 };
 
-//using EnemyState = std::tuple<ENEMY_TYPE, ENEMY_STATE::VECTOR, ENEMY_STATE::SIZE, MoveState&>;
-using EnemyState = std::tuple< ENEMY_TYPE, Vector2db, Vector2db, MoveState&>;
+using EnemyState = std::tuple< ENEMY_TYPE, Vector2db, Vector2db, MoveState&>;	//ｴﾈﾐｰ用情報(ﾀｲﾌﾟ・座標・ｻｲｽﾞ・動き)
 
 class enemy :
 	public Obj
 {
 public:
 	enemy();
-	enemy(EnemyState& a);
+	enemy(EnemyState& a);														//ｽﾃｰﾄを使うｺﾝｽﾄﾗｸﾀ
 	void Update(/*sharedOdj plObj*/) override;
 	~enemy();
 
 private:
-	EnemyMove _moveCtl{ _pos , _rad };
-	void init(void);
-	ENEMY_TYPE _type;
+	EnemyMove _moveCtl{ _pos , _rad };											//敵の動きに必要な情報
+	void init(void);															//初期化
+	ENEMY_TYPE _type;															//種類
 };
 
