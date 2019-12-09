@@ -165,7 +165,7 @@ bool SceneMag::SysInit(void)
 
 
 	//¼½ÃÑˆ—
-	SetWindowText("kadai5");
+	SetWindowText("‰Û‘è5 ƒMƒƒƒ‰ƒK");
 
 	SetGraphMode(ScreenSize.x, ScreenSize.y, 16);	//			//ÌßÚ²‰æ–Ê‚ğ800*600ÄŞ¯ÄA65536FÓ°ÄŞ‚Éİ’è
 	ChangeWindowMode(true);										//‰æ–ÊwindowÓ°ÄŞ
