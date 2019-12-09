@@ -36,7 +36,7 @@ GameScene::GameScene()
 			tmpMoveState.emplace_back(MOVE_TYPE::PITIN1, Vector2db{ static_cast<double>(30.0*3.0) + (35.0*x),static_cast<double>(50.0 + 40.0*y) });//
 			tmpMoveState.emplace_back(MOVE_TYPE::LR,	 Vector2db{ static_cast<double>(30.0*3.0) + (35.0*x),static_cast<double>(50.0 + 40.0*y) });
 			tmpMoveState.emplace_back(MOVE_TYPE::EXPAND, Vector2db{ static_cast<double>(x * 40.0 + lpSceneMng.GameScreenOffset.x / 2), static_cast<double>(y * 35.0 + 16.0 + 35.0) });
-			tmpMoveState.emplace_back(MOVE_TYPE::ATTACK, Vector2db{});
+			tmpMoveState.emplace_back(MOVE_TYPE::ATTACK, Vector2db{static_cast<double>(30.0*3.0) + (35.0*x),static_cast<double>(50.0 + 40.0*y) });
 
 			EnemyState dete = { ENEMY_TYPE::A ,{ static_cast<double>((lpSceneMng.GameScreenSize.x * (((y*10)+x)%2))+ 15 * (((((y * 10) + x) % 2)*2)-1)),
 				static_cast<double>((330 / 2))*((((y * 10)+x) / 2) % 3) + 15 },

@@ -3,6 +3,7 @@
 #include"_debug\_DebugConOut.h"
 #include"Obj.h"
 
+
 int EnemyMove::enemyCnt;
 
 EnemyMove::EnemyMove(Vector2Template<double>& pos, double& rad) :_pos(pos), _rad(rad)
@@ -218,9 +219,17 @@ void EnemyMove::MoveExpand(void)
 {
 	_pos.x -= ((_aim[_aimCnt].second.x - static_cast<double>(lpSceneMng.GameScreenSize.x / 2))*(((lpSceneMng.gameCnt / 30) % 2) * 2.0 - 1.0)) / 100.0;
 	_pos.y -= ((_aim[_aimCnt].second.y )*(((lpSceneMng.gameCnt / 30) % 2) * 2.0 - 1.0)) / 100.0;
+	/*SetMovePrg();*/
 }
 
 void EnemyMove::MoveAttack(void)
 {
+	/*_pos.y += 0.1;*/
 
+	if (_pos.y >= (lpSceneMng.GameScreenSize.y + 32.0))
+	{
+		_pos.x = lpSceneMng.ScreenCenter.x;
+		_pos.y = -(lpSceneMng.GameScreenOffset.y);
+		SetMovePrg();
+	}
 }
