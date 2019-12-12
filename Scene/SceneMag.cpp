@@ -47,12 +47,13 @@ void SceneMag::Draw(void)
 	SetDrawScreen(DX_SCREEN_BACK);
 	ClsDrawScreen();
 
+	LAYER drawLayer = LAYER::BG;
+	int blendMode = DX_BLENDMODE_NOBLEND;
+	int blendNum = 255;
 
-	for (auto screen : LAYER())
-	{
-		SetDrawScreen(_screenID[screen]);
-		ClsDrawScreen();
-	}
+	SetDrawScreen(_layerGID);
+	ClsDrawScreen();
+	SetDrawBlendMode(blendMode, blendNum);
 
 	//Ω¿Ø∏Ç…ÇΩÇ‹Ç¡ÇƒÇ¢ÇÈQueÇï`âÊÇ∑ÇÈ
 	//for (int i = 0; i < _drawList.size(); i++)
@@ -90,11 +91,22 @@ void SceneMag::Draw(void)
 		int id;
 		LAYER layer;
 
-		std::tie(id, x, y, rad, std::ignore, layer) = dQue;
+		int blendModeOld = blendMode;
+		int blendNumOld = blendNum;
 
-		if (_screenID[layer] != GetDrawScreen())
+
+		std::tie(id, x, y, rad, std::ignore, layer,blendMode, blendNum) = dQue;
+
+		if ((layer != drawLayer)||(blendModeOld != blendMode) || (blendNumOld != blendNum))
 		{
-			SetDrawScreen(_screenID[layer]);
+			SetDrawScreen(DX_SCREEN_BACK);
+			SetDrawBlendMode(blendModeOld, blendNumOld);
+
+
+			SetDrawScreen(_layerGID);
+			SetDrawBlendMode(blendMode, blendNum);
+			ClsDrawScreen();
+
 		}
 
 		DrawRotaGraph(
@@ -108,12 +120,11 @@ void SceneMag::Draw(void)
 	}
 
 	SetDrawScreen(DX_SCREEN_BACK);
-	ClsDrawScreen();
+	SetDrawBlendMode(blendMode, blendNum);
 
-	for (auto layer : LAYER())
-	{
-		DrawRotaGraph(ScreenCenter.x,ScreenCenter.y,1.0,0,_screenID[layer],true);
-	}
+	DrawRotaGraph(ScreenCenter.x, ScreenCenter.y, 1.0, 0, _layerGID, true);
+
+	ClsDrawScreen();
 
 	ScreenFlip();
 
@@ -131,7 +142,7 @@ void SceneMag::Run(void)
 	while (ProcessMessage() == 0 && CheckHitKey(KEY_INPUT_ESCAPE) == 0)
 	{
 		_drawList.clear();
-		AddDrawQue({ IMAGE_ID("òg")[0],400,300,0,0,LAYER::UI });
+		AddDrawQue({ IMAGE_ID("òg")[0],400,300,0,0,LAYER::UI,DX_BLENDMODE_NOBLEND,255 });
 		_activeScene = (*_activeScene).Update(std::move(_activeScene));
 		/*_activeScene->Update();*/
 		Draw();
@@ -176,13 +187,13 @@ bool SceneMag::SysInit(void)
 	SetDrawScreen(DX_SCREEN_BACK);								//ï`âÊêÊÇ ﬁØ∏ ﬁØÃßÇ…ê›íË
 	//ScreenSize.x ScreenSize.Y _screenID
 
-	_screenID[LAYER::BG] =(MakeScreen(lpSceneMng.ScreenSize.x, lpSceneMng.ScreenSize.y, true));
-	_screenID[LAYER::UI] = (MakeScreen(lpSceneMng.ScreenSize.x, lpSceneMng.ScreenSize.y, true));
-	_screenID[LAYER::UI] = (MakeScreen(lpSceneMng.ScreenSize.x, lpSceneMng.ScreenSize.y, true));
+	_layerGID = MakeScreen(lpSceneMng.ScreenSize.x, lpSceneMng.ScreenSize.y, true);
 
 	/*srand((unsigned int)time(NULL));*/
 
 	ImageMng::GetInstance().GetID("òg","image/frame.png");
+	ImageMng::GetInstance().GetID("black", "image/black.png");
+	ImageMng::GetInstance().GetID("white", "image/white.png");
 
 	return false;
 }

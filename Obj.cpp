@@ -44,12 +44,12 @@ void Obj::Draw()
 		_animCnt = 0;
 	}
 
-	lpSceneMng.AddDrawQue({ _animMap[_state][_animFrame].first, lpSceneMng.GameScreenOffset.x +_pos.x, lpSceneMng.GameScreenOffset.y + _pos.y, _rad ,zOrder, LAYER::CHAR });
+	lpSceneMng.AddDrawQue({ _animMap[_state][_animFrame].first, lpSceneMng.GameScreenOffset.x +_pos.x, lpSceneMng.GameScreenOffset.y + _pos.y, _rad ,zOrder, LAYER::CHAR,DX_BLENDMODE_NOBLEND,255 });
 }
 
 void Obj::Draw(int id)
 {
-	lpSceneMng.AddDrawQue({ id,_pos.x + lpSceneMng.GameScreenOffset.x ,_pos.y + lpSceneMng.GameScreenOffset.y ,_rad,zOrder,LAYER::CHAR });
+	lpSceneMng.AddDrawQue({ id,_pos.x + lpSceneMng.GameScreenOffset.x ,_pos.y + lpSceneMng.GameScreenOffset.y ,_rad,zOrder,LAYER::CHAR,DX_BLENDMODE_NOBLEND,255 });
 
 }
 

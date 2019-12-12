@@ -15,7 +15,9 @@ enum class DRAW_QUE	//enum claseがあることで同じものでも別の型として扱える　安全
 	Y,
 	RAD,
 	ZORDER,			//ﾚｲﾔｰ内の描画順(数値の低いほうが奥)
-	LAYER			//優先度描画順(奥から)
+	LAYER,			//優先度描画順(奥から)
+	DRAW_MODE,
+	DROW_NUM
 };
 enum class LAYER
 {
@@ -23,6 +25,7 @@ enum class LAYER
 	/*UI,*/
 	CHAR,
 	UI,
+	EX,
 	MAX
 };
 
@@ -31,7 +34,7 @@ LAYER end(LAYER);
 LAYER operator *(LAYER key);
 LAYER operator ++(LAYER& key);
 
-using DrawQueT = std::tuple<int, double, double, double, int, LAYER>;		//呼び出し用Que
+using DrawQueT = std::tuple<int, double, double, double, int, LAYER,int,int>;		//呼び出し用Que
 
 class SceneMag
 {
@@ -77,7 +80,7 @@ private:
 	void Draw(void);
 
 
-	std::map<LAYER,int>_screenID;			//描画ｽｸﾘｰﾝID
+	int _layerGID;			//描画ｽｸﾘｰﾝ
 
 	
 	std::vector<ActQueT> _actList;			//動きのｷｭｰ

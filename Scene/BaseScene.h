@@ -21,5 +21,11 @@ public:
 	BaseScene();
 	virtual ~BaseScene();
 	virtual unique_Base Update(unique_Base own) = 0;		//çXêV
+protected:
+	void FeadInit(std::string fadtyp);
+	bool FeadUpdate(void);
+private:
+	int _fadeCnt;
+	std::string _fadtyp;
 };
 
