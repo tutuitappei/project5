@@ -8,6 +8,7 @@
 #include<player.h>
 #include<enemy.h>
 #include<bullet.h>
+#include<Obj.h>
 #include<Scene\func\FuncBallet.h>
 
 GameScene::GameScene()
