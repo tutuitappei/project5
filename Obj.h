@@ -32,7 +32,7 @@ class Obj
 {
 public:
 	Obj();
-	virtual void Update(/*sharedOdj plObj*/void) = 0;		//情報の更新
+	virtual void Update(sharedOdj plObj/*void*/) = 0;		//情報の更新
 	void Draw(void);										//描画
 	void Draw(int id);										//描画
 	virtual ~Obj();
@@ -57,6 +57,8 @@ protected:
 	bool DestroyPrpc(void);									//爆破ｱﾆﾒｰｼｮﾝの終了
 
 	int zOrder;												//描画の優先度
+
+	UNIT_ID _unitID;
 
 	Vector2db _pos;											//座標
 	Vector2db _size;										//ｻｲｽﾞ

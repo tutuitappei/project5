@@ -72,7 +72,7 @@ unique_Base GameScene::Update(unique_Base own)
 	for (auto date : _objList)
 	{
 
-		(*date).Update(/**plObj*/);
+		(*date).Update(*plObj);
 	}
 
 	for(auto date : _objList)

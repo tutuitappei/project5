@@ -14,6 +14,7 @@ Obj::Obj()
 	_animCnt = 0;
 	_rad = 0;
 	zOrder = 0;
+	_unitID = UNIT_ID::NON;
 }
 
 void Obj::Draw()
